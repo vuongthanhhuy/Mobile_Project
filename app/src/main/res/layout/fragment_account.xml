@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AccountFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+<!--avatar-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:gravity=""
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="70dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/profile" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName1"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:paddingTop="30dp"
+                        android:text="Edward Lary"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvJob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingBottom="40dp"
+                        android:text="Senior Developer"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="45dp"
+                    android:src="@drawable/baseline_mode_edit_24" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="1dp"
+                android:alpha="0.2"
+                android:background="@android:color/black" />
+<!--mypage-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="@string/mypage"
+                android:textSize="25dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/outline_history_24"
+                android:fontFamily="sans-serif-light"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/mybooking"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/round_favorite_border_24"
+                android:fontFamily="sans-serif-light"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/myfavorite"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+
+
+
+<!--Setting-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="@string/settings"
+                android:textSize="25dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/outline_edit_notifications_24"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/notification"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/outline_my_location_24"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/location"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+                <TextView
+                    android:id="@+id/changeLanguage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/outline_language_24"
+                    android:drawableRight="@drawable/united_states_of_america"
+                    android:drawablePadding="13dp"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="left"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/languages"
+                    android:textSize="18dp"
+                    />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+
+
+<!--Info-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="@string/info"
+                android:textSize="25dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/outline_privacy_tip_24"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/privacy"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/outline_info_24"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/info2"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableLeft="@drawable/baseline_logout_24"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/logout"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

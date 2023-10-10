@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/outline_home_24"
+        android:title="@string/home"
+        />
+    <item
+        android:id="@+id/book"
+        android:icon="@drawable/sharp_electric_bolt_24"
+        android:title="@string/book"
+        />
+    <item
+        android:id="@+id/discount"
+        android:icon="@drawable/baseline_discount_24"
+        android:title="@string/discount"
+        />
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/outline_person_24"
+        android:title="@string/account"
+        />
+</menu>

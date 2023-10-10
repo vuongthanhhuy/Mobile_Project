@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FinalProject</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="home">Trang chủ</string>
+    <string name="book">Đặt nhanh</string>
+    <string name="discount">Ưu đãi</string>
+    <string name="account">Tài khoản</string>
+    <string name="name">Họ và tên</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="email">Email</string>
+    <string name="gender">Giới tính</string>
+    <string name="mypage">Trang của tôi</string>
+    <string name="mybooking">Lịch sử đặt phòng</string>
+    <string name="myfavorite">Phòng yêu thích</string>
+    <string name="settings">Cài đặt</string>
+    <string name="notification">Thông báo</string>
+    <string name="location">Vị trí</string>
+    <string name="languages">Ngôn ngữ</string>
+    <string name="info">Thông tin</string>
+    <string name="privacy">Điều khoản và Chính sách bảo mật</string>
+    <string name="info2">Liên hệ</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="lanVie">Tiếng Việt</string>
+    <string name="lanEn">Tiếng Anh</string>
+    <string name="btnLan">Áp dụng</string>
+</resources>
