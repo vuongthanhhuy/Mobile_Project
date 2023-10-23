@@ -20,7 +20,7 @@
     <string name="privacy">Terms and Privacy Policy</string>
     <string name="info2">Contact us</string>
     <string name="logout">Sign out</string>
-    <string name="lanVie">VietNamese</string>
+    <string name="lanVie">Vietnamese</string>
     <string name="lanEn">English</string>
     <string name="btnLan">Apply</string>
     <string name="serviceAgreement"><i>Service Agreement</i></string>
@@ -105,4 +105,5 @@ We employ secure technology security measures to ensure that your payment inform
 3. Management of Payment Information:\n
 
 We do not store your payment information after the transaction is completed. Our goal is to safeguard your privacy and security.</string>
+
 </resources>

@@ -31,4 +31,12 @@
     <string name="content3"><b>Phương thức thanh toán và Bảo mật</b>\n
 Chúng tôi cam kết đảm bảo rằng các giao dịch thanh toán của bạn thông qua ứng dụng của chúng tôi được thực hiện một cách an toàn và bảo mật. Dưới đây là mô tả về phương thức thanh toán và các biện pháp bảo mật:\n
 <b>1. Phương thức thanh toán:</b>\nChúng tôi cung cấp một loạt các phương thức thanh toán cho bạn lựa chọn. Điều này có thể bao gồm thẻ tín dụng, thẻ ghi nợ, ví điện tử, hoặc các phương thức thanh toán trực tuyến khác.\n<b>2. Bảo mật thanh toán:</b>\nChúng tôi sử dụng các biện pháp bảo mật công nghệ để đảm bảo rằng thông tin thanh toán của bạn được bảo vệ. Tất cả các giao dịch thanh toán đều được mã hóa và được thực hiện thông qua các cổng thanh toán an toàn.\n<b>3. Quản lý thông tin thanh toán:</b>\nChúng tôi không lưu trữ thông tin thanh toán của bạn sau khi giao dịch hoàn tất. Mục tiêu của chúng tôi là bảo vệ sự riêng tư và an toàn của bạn.</string>
+    <string name="hello">TravelNest xin chào!</string>
+    <string name="description">Đăng nhập để đặt phòng với những ưu đãi độc quyền dành cho thành viên</string>
+    <string name="phoneNumber">Số điện thoại</string>
+    <string name="signIn">Đăng nhập ngay</string>
+    <string name="otherSignIn">Hoặc đăng nhập nhanh bằng</string>
+    <string name="dontHaveAccount">Bạn chưa có tài khoản?</string>
+    <string name="signUp"><u>Đăng kí ngay</u></string>
+
 </resources>
