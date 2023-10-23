@@ -1,0 +1,22 @@
+package com.example.finalproject.Content_Terms_Privacy;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.finalproject.R;
+
+
+public class Content_Payment_Policy extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_content__payment__policy, container, false);
+    }
+}

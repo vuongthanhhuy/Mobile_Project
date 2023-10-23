@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AccountFragment">
+    tools:context=".Fragment.AccountFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,6 +61,7 @@
                         android:layout_weight="1"
                         android:paddingBottom="40dp"
                         android:text="Senior Developer"
+
                         android:textStyle="italic" />
 
                 </LinearLayout>
@@ -101,10 +102,10 @@
                 android:fontFamily="sans-serif-light"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/mybooking"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -124,10 +125,10 @@
                 android:fontFamily="sans-serif-light"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/myfavorite"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -158,11 +159,11 @@
                 android:drawableLeft="@drawable/outline_edit_notifications_24"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/notification"
                 android:fontFamily="sans-serif-light"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -180,11 +181,11 @@
                 android:drawableLeft="@drawable/outline_my_location_24"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/location"
                 android:fontFamily="sans-serif-light"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -205,11 +206,11 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="left"
                     android:paddingLeft="20dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:paddingRight="20dp"
                     android:text="@string/languages"
-                    android:textSize="18dp"
+                    android:textSize="15dp"
                     />
 
             <View
@@ -233,6 +234,7 @@
                 android:text="@string/info"
                 android:textSize="25dp" />
             <TextView
+                android:id="@+id/termsNprivacy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -241,11 +243,11 @@
                 android:drawableLeft="@drawable/outline_privacy_tip_24"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/privacy"
                 android:fontFamily="sans-serif-light"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -264,11 +266,11 @@
                 android:drawableLeft="@drawable/outline_info_24"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/info2"
                 android:fontFamily="sans-serif-light"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -286,11 +288,11 @@
                 android:drawableLeft="@drawable/baseline_logout_24"
                 android:drawablePadding="10dp"
                 android:paddingLeft="20dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="@string/logout"
                 android:fontFamily="sans-serif-light"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"

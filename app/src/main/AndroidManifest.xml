@@ -13,9 +13,16 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".ChangeLanguage"
+            android:name=".Login.Login"
+            android:exported="false" />
+        <activity
+            android:name=".Content_Terms_Privacy.Terms_PrivacyPolicy"
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
+        <activity
+            android:name=".Change_Language"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -28,7 +35,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

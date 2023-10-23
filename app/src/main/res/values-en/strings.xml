@@ -23,4 +23,86 @@
     <string name="lanVie">VietNamese</string>
     <string name="lanEn">English</string>
     <string name="btnLan">Apply</string>
+    <string name="serviceAgreement"><i>Service Agreement</i></string>
+    <string name="privacyPolicy"><i>Privacy Policy</i></string>
+    <string name="paymentPolicy"><i>Payment Policy</i></string>
+    <string name="content1">Service Agreement - Travelnest\n
+
+Please carefully read this Service Agreement before you begin using the Travelnest app to book hotel rooms. By using this app, you agree to comply with the following terms and conditions.\n
+
+User Rights and Responsibilities\n
+
+a. Users commit to providing accurate and complete personal information when registering and using the Travelnest app.\n
+
+b. Users understand and agree that they will be responsible for any transactions, fees, or issues related to room bookings through the app.\n
+
+c. Users agree to adhere to the regulations of the hotels and service providers when using the Travelnest app.\n
+
+Travelnest Rights and Responsibilities\n
+
+a. Travelnest commits to protecting users personal information and using it in accordance with the privacy policy.\n
+
+b. Travelnest will provide detailed and accurate information about hotels, rooms, and pricing.\n
+
+c. Travelnest will attempt to resolve issues arising between users and hotels or service providers according to the legal provisions.\n
+
+Cancellation of Reservations and Refunds\n
+
+a. Users must follow the cancellation policies of each hotel and service provider. Travelnest is not responsible for reservation cancellations or refunds.\n
+
+Fees and Payments\n
+
+a. Users are responsible for paying fees related to room bookings, including room prices and additional charges.\n
+
+b. Travelnest reserves the right to charge fees based on app usage and services.\n
+
+Termination of Agreement\n
+
+a. Both Travelnest and users have the right to terminate this Agreement at any time.\n
+
+b. Termination will not affect any rights and obligations that have arisen before the Agreement is terminated.\n
+
+Amendments to the Agreement\n
+
+a. Travelnest has the right to change this Agreement and will notify users of any such changes in advance.\n
+
+b. Users have the right to reject changes and cease using the app if they do not agree with these amendments.\n
+
+Please read and understand this Service Agreement thoroughly before you commence using the Travelnest app. Using this app implies your acceptance of all the terms and conditions stipulated in this Agreement.\n
+
+Thank you for choosing Travelnest!\nPlease note that a Service Agreement should comply with legal requirements and should be drafted and adjusted by a professional lawyer or a suitable expert. The information provided is just an example and is not a substitute for legal advice.</string>
+    <string name="content2">Privacy Policy\n
+
+Information Collection and Security\n
+
+We understand that your privacy is of utmost importance and are committed to protecting your personal information. Here is a description of how we collect, use, and secure your information:\n
+
+1. Personal Information Collection:\n
+
+We may collect your personal information when you use our app. This information may include your name, email address, phone number, and other necessary information required to provide the service.\n
+
+2. Use of Information:\n
+
+We use your personal information to provide services, process transactions, and enhance your experience within the app.\n
+
+3. Information Security:\n
+
+We are committed to safeguarding your personal information and do not share this information with any third parties without your consent.</string>
+    <string name="content3">Payment Policy\n
+\n
+Payment Methods and Security\n
+
+We are committed to ensuring that your payment transactions through our app are carried out safely and securely. Here is a description of payment methods and security measures:\n
+
+1. Payment Methods:\n
+
+We provide a range of payment methods for you to choose from. This may include credit cards, debit cards, digital wallets, or other online payment methods.\n
+
+2. Payment Security:\n
+
+We employ secure technology security measures to ensure that your payment information is protected. All payment transactions are encrypted and processed through secure payment gateways.\n
+
+3. Management of Payment Information:\n
+
+We do not store your payment information after the transaction is completed. Our goal is to safeguard your privacy and security.</string>
 </resources>
