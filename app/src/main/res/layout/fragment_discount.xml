@@ -5,45 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Content_Terms_Privacy.Terms_PrivacyPolicy">
+    tools:context=".Fragment.Content_Discount_Fragment.DiscountFragment"
+    android:layout_marginBottom="70dp"
+    >
 
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
+        android:id="@+id/tabLayoutDiscount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/serviceAgreement"
+            android:id="@+id/discountAvailable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Có thể sử dụng" />
+            android:text="@string/discountAvailable" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/privacyPolicy"
+            android:id="@+id/discountHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lịch sử" />
+            android:text="@string/discountHistory" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView3"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpagerDiscount"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="110dp"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

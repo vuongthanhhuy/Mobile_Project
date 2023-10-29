@@ -2,14 +2,13 @@ package com.example.finalproject.Fragment.Content_Discount_Fragment;
 
 import java.util.Date;
 
-public class Discount {
+public class DiscountAvailable {
 
-    private String title;
-    private int percent;
+    private String title,percent;
     private boolean typeHours,typeDay,typeNight;
     private Date startDay,endDay;
 
-    public Discount(String title, int percent, boolean typeHours, boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
+    public DiscountAvailable(String title, String percent, boolean typeHours, boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
         this.title = title;
         this.percent = percent;
         this.typeHours = typeHours;
@@ -27,11 +26,11 @@ public class Discount {
         this.title = title;
     }
 
-    public int getPercent() {
+    public String getPercent() {
         return percent;
     }
 
-    public void setPercent(int percent) {
+    public void setPercent(String percent) {
         this.percent = percent;
     }
 

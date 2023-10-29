@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.Fragment.Content_Account_Fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.example.finalproject.MainActivity;
+import com.example.finalproject.R;
 
 import java.util.Locale;
 

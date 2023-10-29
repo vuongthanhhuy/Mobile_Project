@@ -1,6 +1,6 @@
-package com.example.finalproject.CategoryHotel;
+package com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel;
 
-import com.example.finalproject.Hotel.Hotel;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.Hotel;
 
 import java.util.List;
 

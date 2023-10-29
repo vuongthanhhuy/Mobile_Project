@@ -1,4 +1,4 @@
-package com.example.finalproject.Fragment;
+package com.example.finalproject.Fragment.Content_Account_Fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.finalproject.ChangeLanguage;
-import com.example.finalproject.Content_Terms_Privacy.Terms_PrivacyPolicy;
+import com.example.finalproject.Fragment.Content_Account_Fragment.Content_Terms_Privacy.Terms_PrivacyPolicy;
 import com.example.finalproject.R;
-
-import org.w3c.dom.Text;
 
 import java.util.Locale;
 

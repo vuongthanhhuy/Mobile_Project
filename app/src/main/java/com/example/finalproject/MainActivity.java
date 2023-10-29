@@ -10,10 +10,10 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import com.example.finalproject.Fragment.AccountFragment;
-import com.example.finalproject.Fragment.BookingFragment;
+import com.example.finalproject.Fragment.Content_Account_Fragment.AccountFragment;
+import com.example.finalproject.Fragment.Content_Booking_Fragment.BookingFragment;
 import com.example.finalproject.Fragment.Content_Discount_Fragment.DiscountFragment;
-import com.example.finalproject.Fragment.HomeFragment;
+import com.example.finalproject.Fragment.Content_Home_Fragment.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;

@@ -1,4 +1,4 @@
-package com.example.finalproject.CategoryHotel;
+package com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,8 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject.Fragment.HomeFragment;
-import com.example.finalproject.Hotel.HotelAdapter;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelAdapter;
 import com.example.finalproject.R;
 
 import java.util.List;

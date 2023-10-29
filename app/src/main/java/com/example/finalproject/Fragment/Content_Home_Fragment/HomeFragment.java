@@ -1,4 +1,4 @@
-package com.example.finalproject.Fragment;
+package com.example.finalproject.Fragment.Content_Home_Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.finalproject.CategoryHotel.Category;
-import com.example.finalproject.CategoryHotel.CategoryAdapter;
-import com.example.finalproject.Hotel.Hotel;
+import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.Category;
+import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryAdapter;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.Hotel;
 import com.example.finalproject.R;
 
 import java.util.ArrayList;
@@ -36,17 +36,11 @@ public class HomeFragment extends Fragment {
         mContext = context;
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Context context = getContext();
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        Context context = getContext();
         rcvCategory = view.findViewById(R.id.rcv_category);
         categoryAdapter = new CategoryAdapter(context);
 

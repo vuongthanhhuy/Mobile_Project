@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Content_Terms_Privacy.Content_Payment_Policy">
+    tools:context=".Fragment.Content_Account_Fragment.Content_Terms_Privacy.Content_Payment_Policy">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView

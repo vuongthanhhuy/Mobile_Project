@@ -41,5 +41,11 @@
     <string name="from">From</string>
     <string name="tvDiscount">Sale</string>
     <string name="searchHotel">Search for hotels</string>
-
+    <string name="typeHours">Hourly</string>
+    <string name="typeDay">Daily</string>
+    <string name="typeNight">Overnight</string>
+    <string name="btnUse">Use</string>
+    <string name="discountAvailable">Available</string>
+    <string name="discountHistory">History</string>
+    <string name="expired">EXPIRED: </string>
 </resources>

@@ -1,10 +1,9 @@
-package com.example.finalproject.Content_Terms_Privacy;
+package com.example.finalproject.Fragment.Content_Account_Fragment.Content_Terms_Privacy;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -37,12 +36,12 @@ public class Terms_PrivacyPolicy extends AppCompatActivity {
         String title2 = getResources().getString(R.string.privacyPolicy);
         String title3 = getResources().getString(R.string.paymentPolicy);
 
-        ContentAdapter contentAdapter = new ContentAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        contentAdapter.addFragment(new Content_Service_Agreement(), title1);
-        contentAdapter.addFragment(new Content_Privacy_Policy(), title2);
-        contentAdapter.addFragment(new Content_Payment_Policy(), title3);
+        Terms_PrivacyAdapter termsPrivacyAdapter = new Terms_PrivacyAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        termsPrivacyAdapter.addFragmentTermsPrivacyPolicy(new Content_Service_Agreement(), title1);
+        termsPrivacyAdapter.addFragmentTermsPrivacyPolicy(new Content_Privacy_Policy(), title2);
+        termsPrivacyAdapter.addFragmentTermsPrivacyPolicy(new Content_Payment_Policy(), title3);
 
-        viewPager.setAdapter(contentAdapter);
+        viewPager.setAdapter(termsPrivacyAdapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

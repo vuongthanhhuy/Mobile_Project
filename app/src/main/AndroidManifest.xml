@@ -30,12 +30,12 @@
             android:exported="false" />
 
         <activity
-            android:name=".Content_Terms_Privacy.Terms_PrivacyPolicy"
+            android:name=".Fragment.Content_Account_Fragment.Content_Terms_Privacy.Terms_PrivacyPolicy"
             android:enableOnBackInvokedCallback="true"
             android:exported="false"
             />
         <activity
-            android:name=".ChangeLanguage"
+            android:name=".Fragment.Content_Account_Fragment.ChangeLanguage"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

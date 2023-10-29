@@ -1,4 +1,4 @@
-package com.example.finalproject.Hotel;
+package com.example.finalproject.Fragment.Content_Home_Fragment.Hotel;
 
 public class Hotel {
     private String title, addressHotel;
