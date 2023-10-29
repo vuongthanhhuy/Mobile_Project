@@ -1,22 +1,17 @@
 package com.example.finalproject.Content_Terms_Privacy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
-import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.finalproject.Fragment.AccountFragment;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.finalproject.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -49,22 +44,25 @@ public class Terms_PrivacyPolicy extends AppCompatActivity {
 
         viewPager.setAdapter(contentAdapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiển thị nút quay lại
-            // getSupportActionBar().setDisplayHomeAsUpEnabled(false); // Ẩn nút quay lại
-        }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                finish();
+            }
+        });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        // Gọi onBackPressed để quay lại trang trước (AccountFragment) với kết quả RESULT_OK
-        setResult(Activity.RESULT_OK);
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        // Gọi onBackPressed để quay lại trang trước (AccountFragment) với kết quả RESULT_OK
+//        setResult(Activity.RESULT_OK);
+//        super.onBackPressed();
+//    }
 }

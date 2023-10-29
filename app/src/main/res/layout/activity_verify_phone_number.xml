@@ -38,16 +38,16 @@
             android:ems="10"
             android:hint="@string/phoneNumber"
             android:textSize="15dp"
-            android:inputType="phone"
+            android:inputType="text"
             android:background="@drawable/rounded_edittext"
             android:labelFor="@+id/editText"
-            android:maxLength="9"
+            android:maxLength="12"
             android:paddingBottom="8dp"
             android:paddingStart="70dp"
             android:paddingEnd="8dp"
             android:paddingTop="8dp"
             >
-            <requestFocus />
+            <requestFocus/>
         </EditText>
 
         <TextView

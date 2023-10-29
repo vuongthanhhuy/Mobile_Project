@@ -75,7 +75,6 @@ public class VerifyPhoneNumber extends AppCompatActivity {
                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                 Toast.makeText(VerifyPhoneNumber.this,
                                         "Verifycation Failed", Toast.LENGTH_SHORT).show();
-                                goToEnterOtpActivity(strPhoneNumber,"dsad");
 
                             }
 
@@ -101,7 +100,7 @@ public class VerifyPhoneNumber extends AppCompatActivity {
 
                             FirebaseUser user = task.getResult().getUser();
                             // Update UI
-                            goToLoginActivity(user.getPhoneNumber());
+//                            goToLoginActivity(user.getPhoneNumber());
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

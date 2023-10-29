@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -138,7 +139,7 @@ public class EnterOtp extends AppCompatActivity {
                 });
     }
     private void goToLoginActivity(String phoneNumber) {
-        Intent intent = new Intent(this,Login.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("phone_number", phoneNumber);
         startActivity(intent);
     }

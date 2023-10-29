@@ -9,11 +9,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.finalproject.Fragment.AccountFragment;
 import com.example.finalproject.Fragment.BookingFragment;
-import com.example.finalproject.Fragment.DiscountFragment;
+import com.example.finalproject.Fragment.Content_Discount_Fragment.DiscountFragment;
 import com.example.finalproject.Fragment.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

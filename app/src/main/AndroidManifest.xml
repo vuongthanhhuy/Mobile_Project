@@ -15,16 +15,16 @@
         <activity
             android:name=".Login.VerifyPhoneNumber"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".Login.EnterOtp"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            />
         <activity
             android:name=".Login.Login"
             android:exported="false" />
@@ -32,9 +32,10 @@
         <activity
             android:name=".Content_Terms_Privacy.Terms_PrivacyPolicy"
             android:enableOnBackInvokedCallback="true"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
-            android:name=".Change_Language"
+            android:name=".ChangeLanguage"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -42,12 +43,12 @@
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
