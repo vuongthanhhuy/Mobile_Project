@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".Login.VerifyPhoneNumber">
+    tools:context=".Login.RegistrationActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -21,9 +21,9 @@
         android:id="@+id/textView2"
         android:layout_width="232dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/description"
+        android:text="@string/descriptionSignUp"
         android:textSize="15sp"
+        android:fontFamily="@font/playfairdisplay_regular"
         android:layout_marginBottom="20dp"/>
     <FrameLayout
         android:layout_width="match_parent"
@@ -31,45 +31,80 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp" >
 
-        <EditText
-            android:id="@+id/edit_phone_number"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/phoneNumber"
-            android:textSize="15dp"
-            android:inputType="text"
-            android:background="@drawable/rounded_edittext"
-            android:labelFor="@+id/editText"
-            android:maxLength="12"
-            android:paddingBottom="8dp"
-            android:paddingStart="70dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="8dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             >
-            <requestFocus/>
-        </EditText>
 
-        <TextView
-            android:id="@+id/prefix"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:gravity="center_vertical"
-            android:drawableLeft="@drawable/vietnam"
-            android:drawablePadding="5dp"
-            android:text="+84" />
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo3"
+                android:layout_gravity="center"
+                />
+
+            <EditText
+                android:id="@+id/edt_email_signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:ems="50"
+                android:hint="@string/email"
+                android:inputType="text"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/playfairdisplay_regular"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="20dp">
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/prefix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp" />
+
+            <EditText
+                android:id="@+id/edt_password_signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:hint="@string/password"
+                android:fontFamily="@font/playfairdisplay_regular"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="10dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="20dp">
+
+            </EditText>
+        </LinearLayout>
+
     </FrameLayout>
 
     <Button
-        android:id="@+id/btn_verify_phone_number"
+        android:id="@+id/btn_signUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:backgroundTint="#4CAF50"
-        android:text="@string/signIn"
+        android:text="@string/signUp"
+        android:onClick="signUp"
         android:layout_marginBottom="40dp"/>
 
     <TextView
@@ -107,7 +142,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="60dp"
@@ -115,11 +150,11 @@
             android:text="@string/dontHaveAccount" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/signUp"
+            android:text="@string/signInNow"
             android:textColor="#4CAF50"/>
     </LinearLayout>
 

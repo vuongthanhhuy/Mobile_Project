@@ -31,12 +31,19 @@
     <string name="content2"><b>Thông tin Thu thập và Bảo mật</b>\nChúng tôi hiểu rằng quyền riêng tư của bạn là rất quan trọng và cam kết bảo vệ thông tin cá nhân của bạn. Dưới đây là mô tả về cách chúng tôi thu thập, sử dụng và bảo mật thông tin của bạn:\n<b>1. Thu thập thông tin cá nhân:</b>\nChúng tôi có thể thu thập thông tin cá nhân của bạn khi bạn sử dụng ứng dụng của chúng tôi. Thông tin này có thể bao gồm tên, địa chỉ email, số điện thoại và các thông tin khác cần thiết để cung cấp dịch vụ.\n<b>2. Sử dụng thông tin:</b>\nChúng tôi sử dụng thông tin cá nhân của bạn để cung cấp dịch vụ, xử lý giao dịch và cải thiện trải nghiệm của bạn trong ứng dụng.\n<b>3. Bảo mật thông tin:</b>\nChúng tôi cam kết bảo vệ thông tin cá nhân của bạn và không chia sẻ thông tin này với bất kỳ bên thứ ba nào mà không có sự đồng ý của bạn.</string>
     <string name="content3"><b>Phương thức thanh toán và Bảo mật</b>\nChúng tôi cam kết đảm bảo rằng các giao dịch thanh toán của bạn thông qua ứng dụng của chúng tôi được thực hiện một cách an toàn và bảo mật. Dưới đây là mô tả về phương thức thanh toán và các biện pháp bảo mật:\n<b>1. Phương thức thanh toán:</b>\nChúng tôi cung cấp một loạt các phương thức thanh toán cho bạn lựa chọn. Điều này có thể bao gồm thẻ tín dụng, thẻ ghi nợ, ví điện tử, hoặc các phương thức thanh toán trực tuyến khác.\n<b>2. Bảo mật thanh toán:</b>\nChúng tôi sử dụng các biện pháp bảo mật công nghệ để đảm bảo rằng thông tin thanh toán của bạn được bảo vệ. Tất cả các giao dịch thanh toán đều được mã hóa và được thực hiện thông qua các cổng thanh toán an toàn.\n<b>3. Quản lý thông tin thanh toán:</b>\nChúng tôi không lưu trữ thông tin thanh toán của bạn sau khi giao dịch hoàn tất. Mục tiêu của chúng tôi là bảo vệ sự riêng tư và an toàn của bạn.</string>
     <string name="hello">TravelNest xin chào!</string>
-    <string name="description">Đăng nhập để đặt phòng với những ưu đãi độc quyền dành cho thành viên</string>
-    <string name="phoneNumber">Số điện thoại</string>
+    <string name="descriptionSignIn">Đăng nhập để đặt phòng với những ưu đãi độc quyền dành cho thành viên</string>
+    <string name="descriptionSignUp">Đăng ký để nhận ngay các ưu đãi độc quyền</string>
+    <string name="descriptionForgotPassword">Cung cấp email tài khoản mà bạn muốn đặt lại mật khẩu!</string>
+    <string name="password">Mật khẩu</string>
     <string name="signIn">Đăng nhập ngay</string>
+    <string name="signUp">Đăng ký ngay</string>
+    <string name="resetPass">Đặt lại mật khẩu</string>
+    <string name="back">Quay về</string>
+    <string name="forgotPassword">Quên mật khẩu</string>
     <string name="otherSignIn">Hoặc đăng nhập nhanh bằng</string>
     <string name="dontHaveAccount">Bạn chưa có tài khoản?</string>
-    <string name="signUp"><u>Đăng kí ngay</u></string>
+    <string name="signUpNow"><u>Đăng kí ngay</u></string>
+    <string name="signInNow"><u>Đăng nhập ngay</u></string>
     <string name="timeBooking">giờ đầu</string>
     <string name="from">Chỉ từ</string>
     <string name="tvDiscount">Mã giảm</string>
@@ -48,7 +55,6 @@
     <string name="discountAvailable">Có thể sử dụng</string>
     <string name="discountHistory">Lịch sử</string>
     <string name="expired">Hết hạn: </string>
-
 
 
 </resources>
