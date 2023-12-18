@@ -55,6 +55,41 @@
     <string name="discountAvailable">Có thể sử dụng</string>
     <string name="discountHistory">Lịch sử</string>
     <string name="expired">Hết hạn: </string>
+    <string name="titleDiscount">Ưu đãi</string>
+    <string name="byHours">Theo giờ</string>
+    <string name="byNight">Qua đêm</string>
+    <string name="byDay">Theo ngày</string>
+    <string name="checkIn">Nhận phòng</string>
+    <string name="checkOut">Trả phòng</string>
+    <string name="numHour">Số giờ</string>
+    <string name="numNight">Số đêm</string>
+    <string name="numDay">Số ngày</string>
+    <string name="btnSearch">Tìm kiếm</string>
+    <string name="selectTime">Chọn thời gian</string>
+    <string name="btnClose">Đóng</string>
+    <string name="btnApply">Áp dụng</string>
+    <string name="searchHistory">Lịch sử tìm kiếm</string>
+    <string name="checkInTime">Thời gian nhận phòng</string>
+    <string name="hourOfUse">Số giờ sử dụng</string>
+    <string name="Day">Sáng</string>
+    <string name="Night">Tối</string>
+    <string name="serviceHotel">Tiện ích khách sạn</string>
+    <string name="wifi">Wifi</string>
+    <string name="TV">TV</string>
+    <string name="receptionist">Lễ tân 24/24</string>
+    <string name="bathroom">Phòng tắm đứng</string>
+    <string name="bathtub">Bồn tắm</string>
+    <string name="kingbed">King bed</string>
+    <string name="checkInOutTime">Giờ nhận phòng/trả phòng</string>
+    <string name="typeOfBookingRoom">Loại đặt phòng</string>
+    <string name="time">Thời gian</string>
+    <string name="cancellationPolicy">Chính sách hoàn hủy</string>
+    <string name="contentCancellationPolicy">Hủy miễn phí trước giờ nhận phòng 1 tiếng</string>
+    <string name="chooseRoom">Chọn phòng</string>
+    <string name="fromOnly">Chỉ từ</string>
+    <string name="listRoom">Danh sách phòng</string>
+    <string name="intro">Giới thiệu</string>
+
 
 
 </resources>

@@ -28,6 +28,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         this.mListCategory = list;
         notifyDataSetChanged();
     }
+
+    // Interface để xử lý sự kiện click từ HotelAdapter
+    public interface OnCategoryItemClickListener {
+        void onCategoryItemClick(int position);
+    }
+
+    private OnCategoryItemClickListener onCategoryItemClickListener;
+
+    // Setter để thiết lập listener từ HomeFragment
+    public void setOnCategoryItemClickListener(OnCategoryItemClickListener listener) {
+        this.onCategoryItemClickListener = listener;
+    }
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,17 +50,29 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = mListCategory.get(position);
-        if(category == null){
+        if (category == null) {
             return;
         }
         holder.tvNameCategory.setText(category.getNameCategory());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false);
-        holder.rcvHotel.setLayoutManager(linearLayoutManager );
+        holder.rcvHotel.setLayoutManager(linearLayoutManager);
 
+        // Khởi tạo hotelAdapter
         HotelAdapter hotelAdapter = new HotelAdapter();
         hotelAdapter.setData(category.getHotels());
         holder.rcvHotel.setAdapter(hotelAdapter);
+
+        // Thiết lập sự kiện click từ HotelAdapter
+        hotelAdapter.setOnHotelItemClickListener(new HotelAdapter.OnHotelItemClickListener() {
+            @Override
+            public void onHotelItemClick(int hotelPosition) {
+                // Gọi sự kiện click của CategoryAdapter và truyền vị trí của HotelAdapter
+                if (onCategoryItemClickListener != null) {
+                    onCategoryItemClickListener.onCategoryItemClick(hotelPosition);
+                }
+            }
+        });
     }
 
     @Override
@@ -59,16 +83,21 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return 0;
     }
 
-    public class CategoryViewHolder extends RecyclerView.ViewHolder{
-
+    public class CategoryViewHolder extends RecyclerView.ViewHolder {
         private TextView tvNameCategory;
         private RecyclerView rcvHotel;
+
+        // Thêm trường hotelAdapter
+        private HotelAdapter hotelAdapter;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvNameCategory = itemView.findViewById(R.id.tvNameCategory);
             rcvHotel = itemView.findViewById(R.id.rcv_hotel);
+
+            // Khởi tạo hotelAdapter
+            hotelAdapter = new HotelAdapter();
         }
     }
 }

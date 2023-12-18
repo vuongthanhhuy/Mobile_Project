@@ -1,6 +1,7 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,10 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.finalproject.Fragment.Content_Booking_Fragment.HotelDetails;
 import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.Category;
 import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryAdapter;
 import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.Hotel;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelAdapter;
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 
 import java.util.ArrayList;
@@ -22,6 +27,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private RecyclerView rcvCategory;
     private CategoryAdapter categoryAdapter;
+    private HotelAdapter hotelAdapter;
     private Context mContext;
     public void setContext(Context context) {
         mContext = context;
@@ -43,6 +49,7 @@ public class HomeFragment extends Fragment {
         Context context = getContext();
         rcvCategory = view.findViewById(R.id.rcv_category);
         categoryAdapter = new CategoryAdapter(context);
+        hotelAdapter = new HotelAdapter();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL,false);
         rcvCategory.setLayoutManager(linearLayoutManager);
@@ -50,6 +57,17 @@ public class HomeFragment extends Fragment {
         categoryAdapter.setData(getListCategory());
         rcvCategory.setAdapter(categoryAdapter);
 
+
+
+        categoryAdapter.setOnCategoryItemClickListener(new CategoryAdapter.OnCategoryItemClickListener() {
+            @Override
+            public void onCategoryItemClick(int position) {
+                // Xử lý khi một Category được nhấp vào, ví dụ: chuyển sang một Activity mới
+                Intent intent = new Intent(getActivity(), HotelDetails.class);
+                // Thêm dữ liệu nếu cần thiết
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

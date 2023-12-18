@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="#CDF1CE"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:background="@drawable/custom_toolbar"
+        android:text="@string/selectTime"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="@string/checkIn"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvCheckInDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="15/12"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="@string/checkOut"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+            <TextView
+                android:id="@+id/tvCheckOutDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="16/12"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:text="@string/numDay" />
+            <EditText
+                android:id="@+id/numDay"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:inputType="number|date"
+                android:padding="10dp"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/green"
+            android:text="@string/btnClose" />
+
+        <Button
+            android:id="@+id/btnApply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/green"
+            android:text="@string/btnApply" />
+    </LinearLayout>
+
+
+</LinearLayout>

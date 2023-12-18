@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class DiscountHistoryAdapter extends RecyclerView.Adapter<DiscountHistoryAdapter.DiscountViewHolder>{
-private List<DiscountHistory> mDiscountHistory;
+private List<DiscountHistoryModel> mDiscountHistoryModel;
 private Context mContext;
 
 
@@ -23,8 +23,8 @@ private Context mContext;
     this.mContext = mContext;
 
 }
-public void setData(List<DiscountHistory> list){
-    this.mDiscountHistory = list;
+public void setData(List<DiscountHistoryModel> list){
+    this.mDiscountHistoryModel = list;
     notifyDataSetChanged();
 }
 
@@ -40,7 +40,7 @@ public void setData(List<DiscountHistory> list){
 
     @Override
     public void onBindViewHolder(@NonNull DiscountViewHolder holder, int position) {
-    DiscountHistory discountAvailable = mDiscountHistory.get(position);
+    DiscountHistoryModel discountAvailable = mDiscountHistoryModel.get(position);
     if(discountAvailable == null){
         return;
     }
@@ -76,8 +76,8 @@ public void setData(List<DiscountHistory> list){
 
 @Override
 public int getItemCount() {
-    if(mDiscountHistory != null){
-        return mDiscountHistory.size();
+    if(mDiscountHistoryModel != null){
+        return mDiscountHistoryModel.size();
     }
     return 0;
 }

@@ -10,6 +10,25 @@
     >
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menuDiscount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:paddingLeft="20dp"
+        app:titleTextAppearance="@style/Toolbar.TitleTextCustom">
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/titleDiscount"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:id="@+id/toolbar_title" />-->
+
+    </androidx.appcompat.widget.Toolbar>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutDiscount"
         android:layout_width="match_parent"
@@ -32,6 +51,6 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpagerDiscount"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

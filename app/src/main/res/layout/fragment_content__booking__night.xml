@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    tools:context=".Fragment.Content_Booking_Fragment.Content_Booking_Night">
+
+    <EditText
+        android:id="@+id/edit_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@drawable/outline_search_24"
+        android:ems="10"
+        android:gravity="center|left"
+        android:hint="@string/searchHotel"
+        android:inputType="text"
+        android:labelFor="@+id/editText"
+        android:padding="10dp"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:id="@+id/selectTimeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/checkIn" />
+            <TextView
+                android:id="@+id/tvcheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:text="Bất kỳ" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="5dp"
+            android:layout_height="50dp"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cutting_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/checkOut" />
+            <TextView
+                android:id="@+id/tvcheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:text="Bất kỳ" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnSearchHour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/green"
+        android:text="@string/btnSearch"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/green"
+        android:text="@string/searchHistory"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D1CDCD"/>
+
+</LinearLayout>

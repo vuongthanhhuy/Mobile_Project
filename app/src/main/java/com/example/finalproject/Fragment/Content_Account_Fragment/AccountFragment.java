@@ -16,11 +16,6 @@ import com.example.finalproject.R;
 
 import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AccountFragment extends Fragment {
 
     private TextView tvTermsNprivacy;

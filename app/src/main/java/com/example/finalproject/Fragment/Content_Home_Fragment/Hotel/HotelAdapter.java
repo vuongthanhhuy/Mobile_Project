@@ -1,5 +1,6 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.Hotel;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +22,28 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         this.mHotel = list;
         notifyDataSetChanged();
     }
+
+    // Interface để xử lý sự kiện click
+    public interface OnHotelItemClickListener {
+        void onHotelItemClick(int position);
+    }
+
+    private OnHotelItemClickListener onHotelItemClickListener;
+
+    // Setter để thiết lập listener
+    public void setOnHotelItemClickListener(OnHotelItemClickListener listener) {
+        this.onHotelItemClickListener = listener;
+    }
     @NonNull
     @Override
     public HotelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_card_view,parent,false);
+
         return new HotelViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HotelViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HotelViewHolder holder,final int position) {
         Hotel hotel = mHotel.get(position);
         if(hotel == null){
             return;
@@ -42,6 +56,15 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         holder.tvCost.setText(hotel.getCost()+"");
         holder.tvRate.setText(hotel.getRate()+"");
         holder.tvDiscount.setText(hotel.getDiscount()+"");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onHotelItemClickListener != null) {
+                    onHotelItemClickListener.onHotelItemClick(position);
+                }
+            }
+        });
     }
 
 

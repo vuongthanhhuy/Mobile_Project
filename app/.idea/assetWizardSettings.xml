@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconsoutlined/search/outline_search_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/support_agent/baseline_support_agent_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="161515" />
-                            <entry key="outputName" value="outline_search_24" />
+                            <entry key="color" value="848282" />
+                            <entry key="outputName" value="baseline_support_agent_24" />
                             <entry key="sourceFile" value="D:\Tailieu\code\Mobile\Mobile_Project\app" />
                           </map>
                         </option>

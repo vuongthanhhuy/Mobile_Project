@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragment.Content_Booking_Fragment.BookingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/menuBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:paddingLeft="20dp"
+        app:titleTextAppearance="@style/Toolbar.TitleTextCustom">
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_access_time_24"
+            android:text="@string/byHours" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_dark_mode_24"
+            android:text="@string/byNight" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_light_mode_24"
+            android:text="@string/byDay" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerBooking"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="booking" />
+        android:padding="15dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-</FrameLayout>
+</LinearLayout>

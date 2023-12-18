@@ -2,7 +2,7 @@ package com.example.finalproject.Fragment.Content_Discount_Fragment;
 
 import java.util.Date;
 
-public class DiscountHistory {
+public class DiscountHistoryModel {
 
     private String title,percent;
     private boolean typeHours,typeDay,typeNight;
@@ -10,7 +10,7 @@ public class DiscountHistory {
 
 
 
-    public DiscountHistory(String title, String percent, boolean typeHours, boolean typeDay, boolean typeNight, Date startDay, Date endDay, Date expired) {
+    public DiscountHistoryModel(String title, String percent, boolean typeHours, boolean typeDay, boolean typeNight, Date startDay, Date endDay, Date expired) {
         this.title = title;
         this.percent = percent;
         this.typeHours = typeHours;

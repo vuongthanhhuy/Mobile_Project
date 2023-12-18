@@ -44,16 +44,16 @@ public class Content_Discount_History extends Fragment {
 
         return view;
     }
-    private List<DiscountHistory> getListDiscount(){
-        List<DiscountHistory> listDiscountHistory = new ArrayList<>();
+    private List<DiscountHistoryModel> getListDiscount(){
+        List<DiscountHistoryModel> listDiscountHistoryModel = new ArrayList<>();
 
-        listDiscountHistory.add(new DiscountHistory("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", false, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
-        listDiscountHistory.add(new DiscountHistory("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
-        listDiscountHistory.add(new DiscountHistory("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
-        listDiscountHistory.add(new DiscountHistory("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
-        listDiscountHistory.add(new DiscountHistory("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
-        listDiscountHistory.add(new DiscountHistory("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
+        listDiscountHistoryModel.add(new DiscountHistoryModel("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", false, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
+        listDiscountHistoryModel.add(new DiscountHistoryModel("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
+        listDiscountHistoryModel.add(new DiscountHistoryModel("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
+        listDiscountHistoryModel.add(new DiscountHistoryModel("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
+        listDiscountHistoryModel.add(new DiscountHistoryModel("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
+        listDiscountHistoryModel.add(new DiscountHistoryModel("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31), new Date(123,9,20)));
 
-        return listDiscountHistory;
+        return listDiscountHistoryModel;
     }
 }
