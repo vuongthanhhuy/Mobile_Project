@@ -8,12 +8,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class Terms_PrivacyAdapter extends FragmentPagerAdapter {
+public class CustomPagerAdapter extends FragmentPagerAdapter {
 
     private final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     private final ArrayList<String> fragmentTitle = new ArrayList<>();
 
-    public Terms_PrivacyAdapter(@NonNull FragmentManager fm, int behavior) {
+    public CustomPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
@@ -28,7 +28,7 @@ public class Terms_PrivacyAdapter extends FragmentPagerAdapter {
         return fragmentArrayList.size();
     }
 
-    public void addFragmentTermsPrivacyPolicy(Fragment fragment, String title){
+    public void addFragment(Fragment fragment, String title){
         fragmentArrayList.add(fragment);
         fragmentTitle.add(title);
     }

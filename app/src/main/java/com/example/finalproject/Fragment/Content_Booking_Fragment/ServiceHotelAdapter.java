@@ -4,14 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject.Fragment.Content_Discount_Fragment.DiscountAvailable;
-import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryAdapter;
 import com.example.finalproject.R;
 
 import java.util.List;
@@ -19,13 +16,9 @@ import java.util.List;
 
 public class ServiceHotelAdapter extends RecyclerView.Adapter<ServiceHotelAdapter.ServiceViewHolder>{
 
-    private List<ServiceHotel> mServiceHotel;
-    private Context mContext;
-    public ServiceHotelAdapter(Context mContext){
-        this.mContext = mContext;
+    private List<ServiceHotelModel> mServiceHotel;
 
-    }
-    public void setData(List<ServiceHotel> list){
+    public void setData(List<ServiceHotelModel> list){
         this.mServiceHotel = list;
         notifyDataSetChanged();
     }
@@ -39,7 +32,7 @@ public class ServiceHotelAdapter extends RecyclerView.Adapter<ServiceHotelAdapte
     @Override
     public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
 
-        ServiceHotel serviceHotel = mServiceHotel.get(position);
+        ServiceHotelModel serviceHotel = mServiceHotel.get(position);
         if(serviceHotel == null){
             return;
         }
@@ -71,7 +64,7 @@ public class ServiceHotelAdapter extends RecyclerView.Adapter<ServiceHotelAdapte
         return 0;
     }
 
-    public class ServiceViewHolder extends RecyclerView.ViewHolder{
+     class ServiceViewHolder extends RecyclerView.ViewHolder{
 
         private TextView wifi, TV, receptionist, bathroom, bathtub, kingbed;
         public ServiceViewHolder(@NonNull View itemView) {

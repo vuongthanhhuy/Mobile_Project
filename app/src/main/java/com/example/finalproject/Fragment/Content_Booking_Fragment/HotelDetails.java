@@ -5,13 +5,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.finalproject.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HotelDetails extends AppCompatActivity {
@@ -19,12 +20,14 @@ public class HotelDetails extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView rcvServiceHotel;
     private ServiceHotelAdapter serviceHotelAdapter;
+    private Button btnChooseRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_details);
 
+        btnChooseRoom = findViewById(R.id.btnChooseRoom);
         toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
@@ -37,18 +40,26 @@ public class HotelDetails extends AppCompatActivity {
         });
 
         rcvServiceHotel = findViewById(R.id.rcvServiceHotel);
-        serviceHotelAdapter = new ServiceHotelAdapter(this);
+        serviceHotelAdapter = new ServiceHotelAdapter();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false);
         rcvServiceHotel.setLayoutManager(linearLayoutManager);
 
         serviceHotelAdapter.setData(getListService());
         rcvServiceHotel.setAdapter(serviceHotelAdapter);
-    }
-    private List<ServiceHotel> getListService(){
-        List<ServiceHotel> listServiceHotel = new ArrayList<>();
 
-        listServiceHotel.add(new ServiceHotel(true,true,true,true,true,true));
+        btnChooseRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ListRoom.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private List<ServiceHotelModel> getListService(){
+        List<ServiceHotelModel> listServiceHotel = new ArrayList<>();
+
+        listServiceHotel.add(new ServiceHotelModel(true,true,true,true,true,true));
 
         return listServiceHotel;
     }

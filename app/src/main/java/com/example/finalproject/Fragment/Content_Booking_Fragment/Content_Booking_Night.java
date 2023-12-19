@@ -27,8 +27,10 @@ import com.example.finalproject.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 public class Content_Booking_Night extends Fragment {
@@ -113,12 +115,18 @@ public class Content_Booking_Night extends Fragment {
                 selectedDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                        String selectedCheckInDate = dayOfMonth + "/" + (month + 1);
-                        String selectedCheckOutDate = (dayOfMonth + 1) + "/" + (month + 1);
-                        tvCheckInNight.setText(selectedCheckInDate);
-                        tvCheckOutNight.setText(selectedCheckOutDate);
 
 
+
+                        Calendar selectedDate = Calendar.getInstance();
+                        selectedDate.set(year, month, dayOfMonth);
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
+                        String currentDay = sdf.format(selectedDate.getTime());
+                        // Thêm 1 ngày vào ngày đã chọn
+                        selectedDate.add(Calendar.DATE, 1);
+                        String nextDay = sdf.format(selectedDate.getTime());
+                        tvCheckInNight.setText(currentDay);
+                        tvCheckOutNight.setText("12:00 "+nextDay);
                     }
                 });
 

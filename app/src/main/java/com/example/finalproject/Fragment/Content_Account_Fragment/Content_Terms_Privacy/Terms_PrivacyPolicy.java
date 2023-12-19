@@ -36,12 +36,12 @@ public class Terms_PrivacyPolicy extends AppCompatActivity {
         String title2 = getResources().getString(R.string.privacyPolicy);
         String title3 = getResources().getString(R.string.paymentPolicy);
 
-        Terms_PrivacyAdapter termsPrivacyAdapter = new Terms_PrivacyAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        termsPrivacyAdapter.addFragmentTermsPrivacyPolicy(new Content_Service_Agreement(), title1);
-        termsPrivacyAdapter.addFragmentTermsPrivacyPolicy(new Content_Privacy_Policy(), title2);
-        termsPrivacyAdapter.addFragmentTermsPrivacyPolicy(new Content_Payment_Policy(), title3);
+        CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        adapter.addFragment(new Content_Service_Agreement(), title1);
+        adapter.addFragment(new Content_Privacy_Policy(), title2);
+        adapter.addFragment(new Content_Payment_Policy(), title3);
 
-        viewPager.setAdapter(termsPrivacyAdapter);
+        viewPager.setAdapter(adapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

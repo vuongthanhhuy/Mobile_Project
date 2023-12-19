@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/border_linear_layout"
+    app:cardCornerRadius="16dp"
+    android:layout_marginTop="15dp">
+<!--    <com.smarteist.autoimageslider.SliderView-->
+<!--        android:id="@+id/slider"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        app:sliderAnimationDuration="600"-->
+<!--        app:sliderAutoCycleDirection="back_and_forth"-->
+<!--        app:sliderIndicatorAnimationDuration="600"-->
+<!--        app:sliderIndicatorEnabled="true"-->
+<!--        app:sliderIndicatorGravity="center_horizontal|bottom"-->
+<!--        app:sliderIndicatorMargin="15dp"-->
+<!--        app:sliderIndicatorOrientation="horizontal"-->
+<!--        app:sliderIndicatorPadding="3dp"-->
+<!--        app:sliderIndicatorRadius="2dp"-->
+<!--        app:sliderIndicatorSelectedColor="#5A5A5A"-->
+<!--        app:sliderIndicatorUnselectedColor="#BCB8B8"-->
+<!--        app:sliderScrollTimeInSec="1" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pexels_pixabay_210604" />
+
+    <TextView
+        android:id="@+id/tvTypeOfRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Deluxe Window"
+        android:textAppearance="@style/TitleTextCustom" />
+
+    <TextView
+        android:id="@+id/tvService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Giường đôi - 25m2 - Cửa sổ"
+        android:textAppearance="@style/SubTitleTextCustom" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/green"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="500.000đ"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:textAppearance="@style/SubTitleTextCustom"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/green"
+            android:text="@string/bookRoom"
+            android:layout_marginRight="10dp"
+            />
+
+    </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

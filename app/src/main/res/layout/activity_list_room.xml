@@ -17,4 +17,91 @@
         app:title="@string/listRoom"
         app:titleTextAppearance="@style/TitleTextCustom"
         app:titleCentered="true"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/selectTimeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="#DBFDDC">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/checkIn" />
+            <TextView
+                android:id="@+id/tvcheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:text="Bất kỳ" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="55dp"
+            android:background="@color/green"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/checkOut" />
+            <TextView
+                android:id="@+id/tvcheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:text="Bất kỳ" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvListRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
 </LinearLayout>

@@ -1,6 +1,6 @@
 package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
-public class ServiceHotel {
+public class ServiceHotelModel {
     private boolean wifi;
     private boolean TV;
     private boolean receptionist;
@@ -8,7 +8,7 @@ public class ServiceHotel {
     private boolean bathtub;
     private boolean kingbed;
 
-    public ServiceHotel(boolean wifi, boolean TV, boolean receptionist, boolean bathroom, boolean bathtub, boolean kingbed) {
+    public ServiceHotelModel(boolean wifi, boolean TV, boolean receptionist, boolean bathroom, boolean bathtub, boolean kingbed) {
         this.wifi = wifi;
         this.TV = TV;
         this.receptionist = receptionist;
