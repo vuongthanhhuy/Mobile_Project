@@ -1,8 +1,8 @@
 package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,10 +18,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.finalproject.R;
 import com.google.android.material.chip.Chip;
@@ -39,6 +37,7 @@ public class Content_Booking_Night extends Fragment {
     private Context context;
     private TextView tvCheckIn;
     private TextView tvCheckOut;
+    private Button btnSearchNight;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +47,17 @@ public class Content_Booking_Night extends Fragment {
         layout = view.findViewById(R.id.selectTimeLayout);
         tvCheckIn = view.findViewById(R.id.tvcheckIn);
         tvCheckOut = view.findViewById(R.id.tvcheckOut);
+        btnSearchNight = view.findViewById(R.id.btnSearchNight);
+        btnSearchNight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SearchHotel.class);
+                intent.putExtra("type", "Qua đêm");
+                intent.putExtra("checkIn",tvCheckIn.getText().toString());
+                intent.putExtra("checkOut",tvCheckOut.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         layout.setOnClickListener(new View.OnClickListener() {
             @Override

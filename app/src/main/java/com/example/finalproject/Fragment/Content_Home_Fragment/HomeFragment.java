@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.finalproject.Fragment.Content_Booking_Fragment.HotelDetails;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
     private CategoryAdapter categoryAdapter;
     private HotelAdapter hotelAdapter;
     private Context mContext;
+    private EditText edtSearch;
     public void setContext(Context context) {
         mContext = context;
     }
@@ -48,6 +50,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         Context context = getContext();
         rcvCategory = view.findViewById(R.id.rcv_category);
+        edtSearch = view.findViewById(R.id.edtSearch);
         categoryAdapter = new CategoryAdapter(context);
         hotelAdapter = new HotelAdapter();
 
@@ -58,7 +61,12 @@ public class HomeFragment extends Fragment {
         rcvCategory.setAdapter(categoryAdapter);
 
 
+        edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         categoryAdapter.setOnCategoryItemClickListener(new CategoryAdapter.OnCategoryItemClickListener() {
             @Override
             public void onCategoryItemClick(int position) {
@@ -93,4 +101,5 @@ public class HomeFragment extends Fragment {
 
         return listCategory;
     }
+
 }

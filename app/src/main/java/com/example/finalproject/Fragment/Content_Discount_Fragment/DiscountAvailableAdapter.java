@@ -72,6 +72,12 @@ import java.util.List;
         }
         holder.startDays.setText(startDay);
         holder.endDays.setText(endDay);
+        holder.btnUse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

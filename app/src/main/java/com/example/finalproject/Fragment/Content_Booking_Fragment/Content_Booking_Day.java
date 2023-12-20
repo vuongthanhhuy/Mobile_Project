@@ -2,6 +2,7 @@ package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class Content_Booking_Day extends Fragment {
     private Context context;
     private TextView tvCheckIn;
     private TextView tvCheckOut;
+    private Button btnSearchDay;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +45,19 @@ public class Content_Booking_Day extends Fragment {
         layout = view.findViewById(R.id.selectDateLayout);
         tvCheckIn = view.findViewById(R.id.tvcheckIn);
         tvCheckOut = view.findViewById(R.id.tvcheckOut);
+        btnSearchDay = view.findViewById(R.id.btnSearchDay);
+
+        btnSearchDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, SearchHotel.class);
+                intent.putExtra("type", "Theo ngày");
+                intent.putExtra("checkIn",tvCheckIn.getText().toString());
+                intent.putExtra("checkOut",tvCheckOut.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         layout.setOnClickListener(new View.OnClickListener() {
             @Override

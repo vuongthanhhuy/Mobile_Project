@@ -1,9 +1,11 @@
 package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,6 +56,14 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
             stringBuilder.append("Giường King");
         }
         holder.service.setText(stringBuilder.toString());
+        holder.btnBookingRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = holder.itemView.getContext();
+                Intent intent = new Intent(context, Confirm_Payment.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -67,12 +77,14 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
     class ListRoomViewHolder extends RecyclerView.ViewHolder{
 
         private TextView typeOfRoom, price, service;
+        private Button btnBookingRoom;
         public ListRoomViewHolder(@NonNull View itemView) {
             super(itemView);
 
             typeOfRoom = itemView.findViewById(R.id.tvTypeOfRoom);
             price = itemView.findViewById(R.id.tvPrice);
             service = itemView.findViewById(R.id.tvService);
+            btnBookingRoom = itemView.findViewById(R.id.btnBookingRoom);
         }
     }
 }

@@ -72,21 +72,24 @@ public class Dialog_Select_Night_Day extends AppCompatActivity {
                 tvCheckInDay = findViewById(R.id.tvCheckInDay);
                 tvCheckOutDay = findViewById(R.id.tvCheckOutDay);
                 edtNumDay = findViewById(R.id.numDay);
-                if(edtNumDay.getText().toString().equals("")){
-                    Toast.makeText(Dialog_Select_Night_Day.this, "", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                String checkInNight = tvTimeCheckIn.getText().toString() + " " + tvCheckIn.getText().toString();
-                String checkOutNight = tvCheckOut.getText().toString();
-                String checkInDay = tvCheckInDay.getText().toString();
-                String checkOutDay = tvCheckOutDay.getText().toString();
+
+
+
                 Intent resultIntent = new Intent();
 
                 if(currentTabPosition == 0){
+                    String checkInNight = tvTimeCheckIn.getText().toString() + " " + tvCheckIn.getText().toString();
+                    String checkOutNight = tvCheckOut.getText().toString();
                     resultIntent.putExtra("checkIn", checkInNight);
                     resultIntent.putExtra("checkOut", checkOutNight);
                     setResult(RESULT_OK, resultIntent);
                 }else if (currentTabPosition == 1){
+                    if(edtNumDay.getText().toString().equals("")){
+                        Toast.makeText(Dialog_Select_Night_Day.this, "", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    String checkInDay = tvCheckInDay.getText().toString();
+                    String checkOutDay = tvCheckOutDay.getText().toString();
                     resultIntent.putExtra("checkIn", checkInDay);
                     resultIntent.putExtra("checkOut", checkOutDay);
                     setResult(RESULT_OK, resultIntent);

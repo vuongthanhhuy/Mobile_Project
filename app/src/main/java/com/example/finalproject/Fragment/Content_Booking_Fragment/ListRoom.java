@@ -103,13 +103,11 @@ public class ListRoom extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 111 && resultCode == RESULT_OK && data != null) {
             // Receive Intent data
-            Toast.makeText(context, "asdas", Toast.LENGTH_SHORT).show();
             String checkIn = data.getStringExtra("checkIn");
             String checkOut = data.getStringExtra("checkOut");
             tvCheckIn.setText(checkIn);
             tvCheckOut.setText(checkOut);
-            // Now you have the values of checkIn and checkOut
-            // You can use them as needed in your ListRoom activity
+
         }
     }
 }

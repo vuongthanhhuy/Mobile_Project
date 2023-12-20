@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import com.example.finalproject.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class Dialog_Content_Day extends Fragment {
     private Context context;
     @Override
@@ -37,10 +41,20 @@ public class Dialog_Content_Day extends Fragment {
                     Toast.makeText(context, "Vui lòng chọn số ngày", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String selectedCheckInDate = dayOfMonth + "/" + (month + 1);
-                String selectedCheckOutDate = (dayOfMonth + Integer.parseInt(edtNumDay.getText().toString())) + "/" + (month + 1);
-                tvCheckInDay.setText(selectedCheckInDate);
-                tvCheckOutDay.setText(selectedCheckOutDate);
+                // Lấy giá trị từ EditText và chuyển đổi thành số nguyên
+                String numDaysStr = edtNumDay.getText().toString();
+                int numDays = Integer.parseInt(numDaysStr);
+
+
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.set(year, month, dayOfMonth);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
+                String currentDay = sdf.format(selectedDate.getTime());
+                // Thêm 1 ngày vào ngày đã chọn
+                selectedDate.add(Calendar.DATE, numDays);
+                String nextDay = sdf.format(selectedDate.getTime());
+                tvCheckInDay.setText(currentDay);
+                tvCheckOutDay.setText(nextDay);
 
 
             }

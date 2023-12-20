@@ -43,29 +43,31 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HotelViewHolder holder,final int position) {
+    public void onBindViewHolder(@NonNull HotelViewHolder holder, final int position) {
         Hotel hotel = mHotel.get(position);
-        if(hotel == null){
+        if (hotel == null) {
             return;
         }
 
         holder.imgHotel.setImageResource(hotel.getResourceId());
         holder.tvTitle.setText(hotel.getTitle());
         holder.tvAddressHotel.setText(hotel.getAddressHotel());
-        holder.tvTimeBooking.setText(hotel.getTimeBooking()+"");
-        holder.tvCost.setText(hotel.getCost()+"");
-        holder.tvRate.setText(hotel.getRate()+"");
-        holder.tvDiscount.setText(hotel.getDiscount()+"");
+        holder.tvTimeBooking.setText(String.valueOf(hotel.getTimeBooking()));
+        holder.tvCost.setText(String.valueOf(hotel.getCost()));
+        holder.tvRate.setText(String.valueOf(hotel.getRate()));
+        holder.tvDiscount.setText(String.valueOf(hotel.getDiscount()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (onHotelItemClickListener != null) {
-                    onHotelItemClickListener.onHotelItemClick(position);
+                int adapterPosition = holder.getAdapterPosition();
+                if (adapterPosition != RecyclerView.NO_POSITION && onHotelItemClickListener != null) {
+                    onHotelItemClickListener.onHotelItemClick(adapterPosition);
                 }
             }
         });
     }
+
 
 
     @Override

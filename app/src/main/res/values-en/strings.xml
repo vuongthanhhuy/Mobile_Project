@@ -4,6 +4,7 @@
     <string name="home">Home</string>
     <string name="book">Booking</string>
     <string name="discount">Discount</string>
+    <string name="discount2">Discount</string>
     <string name="account">Account</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
@@ -90,4 +91,22 @@
     <string name="listRoom">List Room</string>
     <string name="intro">Introduction</string>
     <string name="bookRoom">Booking</string>
+    <string name="confirmPayment">Confirm and Payment</string>
+    <string name="bookingInfo">Booking Infomation</string>
+    <string name="userInfo">User Infomation</string>
+    <string name="userPhoneNumber">Phone Number</string>
+    <string name="userName">Full Name</string>
+    <string name="chooseDiscount">Choose Discount</string>
+    <string name="contentDiscount">Enjoy booking with special offers</string>
+    <string name="paymentMethod">Payment Method</string>
+    <string name="cash">Pay at the hotel</string>
+    <string name="vnpay">VNPAY Wallet</string>
+    <string name="paymentDetails">Payment Details</string>
+    <string name="price">Price</string>
+    <string name="totalPrice">Total Price</string>
+    <string name="searchResult">Search Result</string>
+
+
+
+
 </resources>

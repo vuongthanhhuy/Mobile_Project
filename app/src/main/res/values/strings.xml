@@ -4,6 +4,7 @@
     <string name="home">Trang chủ</string>
     <string name="book">Đặt nhanh</string>
     <string name="discount">Ưu đãi</string>
+    <string name="discount2">Khuyến mãi</string>
     <string name="account">Tài khoản</string>
     <string name="name">Họ và tên</string>
     <string name="phone">Số điện thoại</string>
@@ -90,8 +91,20 @@
     <string name="listRoom">Danh sách phòng</string>
     <string name="intro">Giới thiệu</string>
     <string name="bookRoom">Đặt phòng</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirmPayment">Xác nhận và thanh toán</string>
+    <string name="bookingInfo">Thông tin đặt phòng</string>
+    <string name="userInfo">Thông tin người đặt phòng</string>
+    <string name="userPhoneNumber">Số điện thoại</string>
+    <string name="userName">Họ tên</string>
+    <string name="chooseDiscount">Chọn ưu đãi</string>
+    <string name="contentDiscount">Tận hưỡng đặt phòng với ưu đãi</string>
+    <string name="paymentMethod">Phương thức thanh toán</string>
+    <string name="cash">Thanh toán tại khách sạn</string>
+    <string name="vnpay">Ví VNPAY</string>
+    <string name="paymentDetails">Chi tiết thanh toán</string>
+    <string name="price">Tiền phòng</string>
+    <string name="totalPrice">Tổng thanh toán</string>
+    <string name="searchResult">Kết quả tìm kiếm</string>
 
 
 </resources>
