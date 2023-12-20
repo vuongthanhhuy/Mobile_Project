@@ -43,6 +43,7 @@
     <string name="forgotPassword">Quên mật khẩu</string>
     <string name="otherSignIn">Hoặc đăng nhập nhanh bằng</string>
     <string name="dontHaveAccount">Bạn chưa có tài khoản?</string>
+    <string name="HaveAccount">Bạn đã có tài khoản?</string>
     <string name="signUpNow"><u>Đăng kí ngay</u></string>
     <string name="signInNow"><u>Đăng nhập ngay</u></string>
     <string name="timeBooking">giờ đầu</string>

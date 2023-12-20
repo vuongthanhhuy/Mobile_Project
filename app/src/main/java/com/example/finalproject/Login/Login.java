@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 
 public class Login extends AppCompatActivity {
@@ -58,8 +61,8 @@ public class Login extends AppCompatActivity {
                 signIn();
             }
         });
-    }
 
+    }
 
     private void signIn(){
         String userEmail = edtEmail.getText().toString();
@@ -83,11 +86,43 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
                             Toast.makeText(Login.this, "Login Successfully" , Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, MainActivity.class));
                         }else{
                             Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                         }
+                    }
+                });
+    }
+    private void fetchUserData(String userEmail) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Query the "users" collection based on the email
+        db.collection("users")
+                .whereEqualTo("email", userEmail)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            // User found in Firestore, you can access the data
+                            String userId = document.getId();
+                            String userName = document.getString("name");
+                            String userPhoneNumber = document.getString("phoneNumber");
+
+                            // Perform any additional checks or actions based on user data
+                            // For example, store user information in SharedPreferences or start a new activity
+
+                            // Start MainActivity or any other activity
+                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            intent.putExtra("userId", userId);
+                            intent.putExtra("userName", userName);
+                            intent.putExtra("userPhoneNumber", userPhoneNumber);
+                            startActivity(intent);
+                            finish(); // Optional: Finish the LoginActivity to prevent going back
+                        }
+                    } else {
+                        Log.w("TAG", "Error getting documents.", task.getException());
                     }
                 });
     }

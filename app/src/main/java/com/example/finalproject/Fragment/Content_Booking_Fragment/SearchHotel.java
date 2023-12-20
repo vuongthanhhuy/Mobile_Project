@@ -30,10 +30,10 @@ public class SearchHotel extends AppCompatActivity {
         initUI();
 
 
-        hotelAdapter = new HotelAdapter();
+//        hotelAdapter = new HotelAdapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
         rcvSearchResult.setLayoutManager(linearLayoutManager);
-        hotelAdapter.setData(getListHotel());
+//        hotelAdapter.setData(getListHotel());
         rcvSearchResult.setAdapter(hotelAdapter);
 
         Intent intent = getIntent();
@@ -57,16 +57,16 @@ public class SearchHotel extends AppCompatActivity {
             }
         });
     }
-    private List<Hotel> getListHotel(){
-        List<Hotel> listHotel = new ArrayList<>();
-
-
-        listHotel.add(new Hotel("KS1","quận 7",2,100,4,R.drawable.pexels_max_rahubovskiy_6782472,100));
-        listHotel.add(new Hotel("KS2","quận 7",2,100,4,R.drawable.pexels_max_rahubovskiy_6782472,100));
-        listHotel.add(new Hotel("KS3","quận 7",2,100,4,R.drawable.pexels_max_rahubovskiy_6782472,100));
-        listHotel.add(new Hotel("KS4","quận 7",2,100,4,R.drawable.pexels_max_rahubovskiy_6782472,100));
-
-        return listHotel;
-    }
+//    private List<Hotel> getListHotel(){
+//        List<Hotel> listHotel = new ArrayList<>();
+//
+//
+//        listHotel.add(new Hotel("KS1","quận 7",4,R.drawable.pexels_max_rahubovskiy_6782472,100));
+//        listHotel.add(new Hotel("KS2","quận 7",4,R.drawable.pexels_max_rahubovskiy_6782472,100));
+//        listHotel.add(new Hotel("KS3","quận 7",4,R.drawable.pexels_max_rahubovskiy_6782472,100));
+//        listHotel.add(new Hotel("KS4","quận 7",4,R.drawable.pexels_max_rahubovskiy_6782472,100));
+//
+//        return listHotel;
+//    }
 
 }

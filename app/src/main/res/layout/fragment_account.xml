@@ -40,29 +40,34 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvName1"
-                        android:layout_width="120dp"
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:drawablePadding="10dp"
                         android:paddingTop="30dp"
-                        android:text="Edward Lary"
+                        android:text="Tân"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvJob"
+                        android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingBottom="40dp"
-                        android:text="Senior Developer"
-
+                        android:text="nguyentan1911@gmail.com"
                         android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tvPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0898495911" />
 
                 </LinearLayout>
 
@@ -71,6 +76,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="45dp"
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/baseline_mode_edit_24" />
 
             </LinearLayout>

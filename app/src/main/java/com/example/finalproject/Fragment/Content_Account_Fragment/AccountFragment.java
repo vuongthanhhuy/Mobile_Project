@@ -6,25 +6,35 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalproject.Fragment.Content_Account_Fragment.Content_Terms_Privacy.Terms_PrivacyPolicy;
 import com.example.finalproject.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Locale;
 
 public class AccountFragment extends Fragment {
 
-    private TextView tvTermsNprivacy;
+    private TextView tvTermsNprivacy,changeLanguage,tvName, tvEmail,tvPhoneNumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
-        TextView changeLanguage = (TextView) view.findViewById(R.id.changeLanguage);
+        changeLanguage =  view.findViewById(R.id.changeLanguage);
+        tvName = view.findViewById(R.id.tvName);
+        tvEmail = view.findViewById(R.id.tvEmail);
+        tvPhoneNumber = view.findViewById(R.id.tvPhoneNumber);
+
         Locale currentLocale = getResources().getConfiguration().locale;
         String currentLanguage = currentLocale.getLanguage();
 
@@ -60,7 +70,7 @@ public class AccountFragment extends Fragment {
 
         });
 
-
+        fetchUserData();
         tvTermsNprivacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +78,49 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
-            return view;
+        return view;
+
+    }
+
+
+
+    private void fetchUserData(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            // Reference to Firestore instance
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            // Reference to the "users" collection
+            CollectionReference usersCollection = db.collection("users");
+
+            // Query the user by userID
+            usersCollection.document(userId).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            // User data found in Firestore
+                            String name = documentSnapshot.getString("name");
+                            String phoneNumber = documentSnapshot.getString("phoneNumber");
+                            String email = documentSnapshot.getString("email");
+
+                            tvName.setText(name);
+                            tvEmail.setText(email);
+                            tvPhoneNumber.setText(phoneNumber);
+                            // Now you can use name, phoneNumber, email as needed
+                            Log.d("TAG", "User data: Name - " + name + ", Phone - " + phoneNumber + ", Email - " + email);
+                        } else {
+                            // User data not found in Firestore
+                            Log.d("TAG", "No such document");
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Error fetching user data from Firestore
+                        Log.w("TAG", "Error getting document", e);
+                    });
+        }
 
     }
 }

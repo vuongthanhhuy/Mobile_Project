@@ -9,12 +9,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.finalproject.Fragment.Content_Account_Fragment.AccountFragment;
 import com.example.finalproject.Fragment.Content_Booking_Fragment.BookingFragment;
 import com.example.finalproject.Fragment.Content_Discount_Fragment.DiscountFragment;
 import com.example.finalproject.Fragment.Content_Home_Fragment.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
@@ -28,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         replaceFragment(new HomeFragment());
-
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+//            Toast.makeText(this,currentUser.getUid()+ "  2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,currentUser.getUid()+ "  3", Toast.LENGTH_SHORT).show();
+        }
         BNView = findViewById(R.id.bottomNavigationView);
         BNView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();

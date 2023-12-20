@@ -39,29 +39,7 @@
             android:textSize="20dp"
             android:layout_margin="10dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            >
 
-            <TextView
-                android:id="@+id/tvTimeBooking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textColor="#2196F3"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/timeBooking"
-                android:paddingLeft="3dp"
-                android:textColor="#2196F3" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,32 +90,7 @@
                 android:text="4.8" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
-            >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_discount_24"
-                android:rotationY="360"
-                android:text="@string/tvDiscount"
-                android:textColor="#29490A" />
-
-            <TextView
-                android:id="@+id/tvDiscount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="2dp"
-                android:textColor="#29490A"
-                android:text="100k" />
-        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

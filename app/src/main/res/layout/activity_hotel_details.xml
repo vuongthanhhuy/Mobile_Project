@@ -111,6 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:textAllCaps="true"
                     android:text="CHILL HOTEL"
                     android:textAppearance="@style/TitleTextCustom" />
 
@@ -220,33 +221,7 @@
                         android:textAppearance="@style/SubTextCustom"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/byHours"
-                        android:gravity="left"
-                        android:textAppearance="@style/SubTitleTextCustom"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/tvTimeByHour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Từ 06:00 tới 23:00"
-                        android:gravity="right"
-                        android:textAppearance="@style/SubTitleTextCustom"
-                        />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

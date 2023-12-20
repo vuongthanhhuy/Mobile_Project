@@ -1,8 +1,19 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.Hotel;
 
 public class Hotel {
-    private String title, addressHotel;
-    private int timeBooking, discount, cost, resourceId;
+    private String title;
+    private String addressHotel;
+
+    public String getImgHotel() {
+        return imgHotel;
+    }
+
+    public void setImgHotel(String imgHotel) {
+        this.imgHotel = imgHotel;
+    }
+
+    private String imgHotel;
+    private int  price;
     private int rate;
 
     public String getTitle() {
@@ -21,37 +32,14 @@ public class Hotel {
         this.addressHotel = addressHotel;
     }
 
-    public int getTimeBooking() {
-        return timeBooking;
-    }
-
-    public void setTimeBooking(int timeBooking) {
-        this.timeBooking = timeBooking;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
-
     public int getCost() {
-        return cost;
+        return price;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setCost(int price) {
+        this.price = price;
     }
 
-    public int getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
-    }
 
     public int getRate() {
         return rate;
@@ -61,13 +49,11 @@ public class Hotel {
         this.rate = rate;
     }
 
-    public Hotel(String title, String addressHotel, int timeBooking, int discount, int cost, int resourceId, int rate) {
+    public Hotel(String title, String addressHotel, String imgHotel, int price, int rate) {
         this.title = title;
         this.addressHotel = addressHotel;
-        this.timeBooking = timeBooking;
-        this.discount = discount;
-        this.cost = cost;
-        this.resourceId = resourceId;
+        this.imgHotel = imgHotel;
+        this.price = price;
         this.rate = rate;
     }
 }

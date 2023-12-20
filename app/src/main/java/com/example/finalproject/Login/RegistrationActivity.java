@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.finalproject.R;
 import com.example.finalproject.User.User;
+import com.google.firebase.auth.FirebaseUser;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,7 +33,7 @@ import java.util.Map;
 
 
 public class RegistrationActivity extends AppCompatActivity {
-    private EditText edtEmail,edtPass;
+    private EditText edtEmail,edtPass,edtName,edtPNumber;
     private Button btnSignUp;
 
     private FirebaseAuth mAuth;
@@ -46,6 +48,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         edtEmail = findViewById(R.id.edt_email_signUp);
         edtPass = findViewById(R.id.edt_password_signUp);
+        edtName = findViewById(R.id.edtName);
+        edtPNumber = findViewById(R.id.edtPhoneNumber);
         btnSignUp = findViewById(R.id.btn_signUp);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -60,6 +64,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private void signUp(){
         String userEmail = edtEmail.getText().toString();
         String userPassword = edtPass.getText().toString();
+        String userName = edtName.getText().toString();
+        String userPhoneNumber = edtPNumber.getText().toString();
 
         if(TextUtils.isEmpty(userEmail)){
             Toast.makeText(this, "Enter your Email!", Toast.LENGTH_SHORT).show();
@@ -74,43 +80,64 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(this, "Password to short", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(TextUtils.isEmpty(userName)){
+            Toast.makeText(this, "Enter your name!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(userPhoneNumber)){
+            Toast.makeText(this, "Enter your phone number!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        addUserToFirestore(userEmail, userPassword,userName, userPhoneNumber);
 
 
-        mAuth.createUserWithEmailAndPassword(userEmail,userPassword)
-                .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(RegistrationActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                            // Add userEmail to Firestore collection "users"
-                            addUserToFirestore(userEmail);
-
-
-                            startActivity(new Intent(RegistrationActivity.this, Login.class));
-                        }else{
-                            Toast.makeText(RegistrationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 
-    private void addUserToFirestore(String userEmail) {
+    private void addUserToFirestore(String userEmail, String userPassword, String userName, String userPNumber) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        // Create a Map for the user data
-        Map<String, Object> user = new HashMap<>();
-        user.put("email", userEmail);
+        // Create a new user in Firebase Authentication
+        auth.createUserWithEmailAndPassword(userEmail, userPassword)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = auth.getCurrentUser();
+                        if (firebaseUser != null) {
+                            // Firebase Authentication successful, now add user to Firestore
+                            String userId = firebaseUser.getUid();
 
-        // Add the user data to the "users" collection
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(documentReference -> {
-                    Log.d("TAG", "User added to Firestore with ID: " + documentReference.getId());
+                            // Create a Map for the user data
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("email", userEmail);
+                            user.put("name", userName);
+                            user.put("phoneNumber", userPNumber);
+
+                            // Add the user data to the "users" collection with the UID as the document ID
+                            db.collection("users")
+                                    .document(userId)
+                                    .set(user)
+                                    .addOnSuccessListener(documentReference -> {
+                                        Toast.makeText(RegistrationActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(RegistrationActivity.this, Login.class));
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(RegistrationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                                    });
+                        }
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                        Toast.makeText(this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 })
                 .addOnFailureListener(e -> {
-                    Log.w("TAG", "Error adding user to Firestore", e);
+                    Log.w("TAG", "createUserWithEmail:failure", e);
+                    Toast.makeText(this, "Authentication failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
+
 
 
 
