@@ -1,20 +1,31 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.Hotel;
 
 public class Hotel {
+    private String id;
     private String title;
     private String addressHotel;
-
     public String getImgHotel() {
         return imgHotel;
     }
-
-    public void setImgHotel(String imgHotel) {
-        this.imgHotel = imgHotel;
-    }
-
     private String imgHotel;
     private int  price;
     private int rate;
+
+    public Hotel(String id, String title, String addressHotel, String imgHotel, int price, int rate) {
+        this.id = id;
+        this.title = title;
+        this.addressHotel = addressHotel;
+        this.imgHotel = imgHotel;
+        this.price = price;
+        this.rate = rate;
+    }
+    public String getID() {
+        return id;
+    }
+
+    public void setID(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -39,6 +50,9 @@ public class Hotel {
     public void setCost(int price) {
         this.price = price;
     }
+    public void setImgHotel(String imgHotel) {
+        this.imgHotel = imgHotel;
+    }
 
 
     public int getRate() {
@@ -49,11 +63,5 @@ public class Hotel {
         this.rate = rate;
     }
 
-    public Hotel(String title, String addressHotel, String imgHotel, int price, int rate) {
-        this.title = title;
-        this.addressHotel = addressHotel;
-        this.imgHotel = imgHotel;
-        this.price = price;
-        this.rate = rate;
-    }
+
 }

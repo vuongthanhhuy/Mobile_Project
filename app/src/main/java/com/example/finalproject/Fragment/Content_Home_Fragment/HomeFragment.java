@@ -77,64 +77,72 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchDataFromFirestore() {
-        // Access the Firestore instance
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // Reference to the "hotel" collection
         CollectionReference hotelCollection = db.collection("hotel");
 
-        // Fetch data from Firestore
         hotelCollection.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                // Process the query result
-                List<Hotel> hotelList1 = new ArrayList<>();
-                List<Hotel> hotelList2 = new ArrayList<>();
+                List<Category> categoryList = new ArrayList<>();
+
                 for (DocumentSnapshot document : task.getResult()) {
                     String hotelCategory = document.getString("category");
-                    if(hotelCategory.toString().equals("1")){
-                        String hotelAddress = document.getString("hotelAddress");
-                        String hotelName = document.getString("hotelName");
-                        Long hotelPrice = document.getLong("hotelPrice");
-                        int price = 0; // Giá trị mặc định
-                        if (hotelPrice != null) {
-                            price = hotelPrice.intValue();
-                        }
-                        String hotelSymbolicImage = document.getString("hotelSymbolicImage");
-                        // Create a Hotel object and add it to the list
-                        Hotel hotel = new Hotel(hotelName, hotelAddress, hotelSymbolicImage, price, 100);
-                        hotelList1.add(hotel);
-                    }else if(hotelCategory.toString().equals("2")){
-                        String hotelAddress = document.getString("hotelAddress");
-                        String hotelName = document.getString("hotelName");
-                        Long hotelPrice = document.getLong("hotelPrice");
-                        int price = 0; // Giá trị mặc định
-                        if (hotelPrice != null) {
-                            price = hotelPrice.intValue();
-                        }
-                        String hotelSymbolicImage = document.getString("hotelSymbolicImage");
-                        // Create a Hotel object and add it to the list
-                        Hotel hotel = new Hotel(hotelName, hotelAddress, hotelSymbolicImage, price, 100);
-                        hotelList2.add(hotel);
-                    }
 
+                    if (hotelCategory != null) {
+                        // Lấy tất cả trường từ Firestore
+                        String hotelID = document.getId();
+                        String hotelName = document.getString("hotelName");
+                        String hotelAddress = document.getString("hotelAddress");
+                        Long hotelPrice = document.getLong("hotelPrice");
+                        String hotelSymbolicImage = document.getString("hotelSymbolicImage");
+                        // Xử lý địa chỉ để lấy quận và phường
+                        String districtAndWard = extractDistrictAndWard(hotelAddress);
+
+                        // Chuyển đổi giá từ Long sang int
+                        int price = (hotelPrice != null) ? hotelPrice.intValue() : 0;
+
+                        // Tạo đối tượng Hotel
+                        Hotel hotel = new Hotel(hotelID, hotelName, districtAndWard, hotelSymbolicImage, price, 100);
+
+                        // Tạo đối tượng Category nếu chưa tồn tại
+                        Category category = getCategoryByName(categoryList, hotelCategory);
+
+                        // Thêm hotel vào danh sách hotel của category
+                        category.getHotels().add(hotel);
+                    }
                 }
 
-                // Create a Category object and set the list of hotels
-                Category category1 = new Category("Category 1", hotelList1);
-                Category category2 = new Category("Category 2", hotelList2);
-
-                // Add the category to the list
-                listCategory = new ArrayList<>();
-                listCategory.add(category1);
-                listCategory.add(category2);
-
-                // Update the adapter with the list of categories
-                categoryAdapter.setData(listCategory);
+                // Update adapter with the list of categories
+                categoryAdapter.setData(categoryList);
 
             } else {
                 // Handle errors
-                // You may want to display an error message
+                // Display an error message if needed
             }
         });
     }
+
+    private String extractDistrictAndWard(String hotelAddress) {
+        int quanIndex = hotelAddress.indexOf("Quận");
+        int commaIndex = hotelAddress.indexOf(",", quanIndex);
+
+        if (quanIndex != -1 && commaIndex != -1) {
+            return hotelAddress.substring(quanIndex, commaIndex).trim();
+        } else {
+            return ""; // hoặc xử lý tương ứng nếu không tìm thấy
+        }
+    }
+
+    private Category getCategoryByName(List<Category> categoryList, String categoryName) {
+        for (Category category : categoryList) {
+            if (category.getNameCategory().equals(categoryName)) {
+                return category;
+            }
+        }
+
+        // Nếu category chưa tồn tại, tạo mới và thêm vào danh sách
+        Category newCategory = new Category(categoryName, new ArrayList<>());
+        categoryList.add(newCategory);
+        return newCategory;
+    }
+
 }

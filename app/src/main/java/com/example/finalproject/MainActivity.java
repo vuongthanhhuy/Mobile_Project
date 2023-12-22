@@ -31,12 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         replaceFragment(new HomeFragment());
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-//            Toast.makeText(this,currentUser.getUid()+ "  2", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this,currentUser.getUid()+ "  3", Toast.LENGTH_SHORT).show();
-        }
+
+
         BNView = findViewById(R.id.bottomNavigationView);
         BNView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();

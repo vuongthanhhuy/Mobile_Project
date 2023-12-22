@@ -501,7 +501,7 @@
                     android:alpha="0.6"/>
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/tvTotalPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -521,7 +521,7 @@
                 android:background="@android:color/black" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnPayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/bookRoom"

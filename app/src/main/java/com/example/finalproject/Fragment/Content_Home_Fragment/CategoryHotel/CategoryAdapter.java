@@ -1,6 +1,7 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,13 +68,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         // Thiết lập sự kiện click từ HotelAdapter
         hotelAdapter.setOnHotelItemClickListener(new HotelAdapter.OnHotelItemClickListener() {
             @Override
-            public void onHotelItemClick(int hotelPosition) {
-                // Gọi sự kiện click của CategoryAdapter và truyền vị trí của HotelAdapter
-                if (onCategoryItemClickListener != null) {
-                    onCategoryItemClickListener.onCategoryItemClick(hotelPosition);
-                }
+            public void onHotelItemClick(int position, String hotelID) {
+                // Handle item click
+                //Log.d("HotelAdapter", "Item clicked at position: " + position + ", Hotel Title: " + hotelTitle);
+                // Now you have the hotel title and can use it as needed
             }
         });
+
     }
 
     @Override

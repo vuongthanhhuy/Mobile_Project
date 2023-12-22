@@ -1,22 +1,48 @@
 package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
+
 public class ListRoomModel {
+    private String hotelID;
+    private ArrayList<SlideModel> imgRoom;
     private int price;
-    private String typeOfRoom;
+    private String roomName;
     private boolean wifi;
     private boolean TV;
     private boolean netflix;
+    private boolean bathroom;
     private boolean bathtub;
     private boolean kingbed;
 
-    public ListRoomModel(int price, String typeOfRoom, boolean wifi, boolean TV, boolean netflix, boolean bathtub, boolean kingbed) {
+
+    public ListRoomModel(String hotelID, ArrayList<SlideModel> imgRoom, int price, String roomName, boolean wifi, boolean TV, boolean netflix, boolean bathroom, boolean bathtub, boolean kingbed) {
+        this.hotelID = hotelID;
+        this.imgRoom = imgRoom;
         this.price = price;
-        this.typeOfRoom = typeOfRoom;
+        this.roomName = roomName;
         this.wifi = wifi;
         this.TV = TV;
         this.netflix = netflix;
+        this.bathroom = bathroom;
         this.bathtub = bathtub;
         this.kingbed = kingbed;
+    }
+    public String getHotelID() {
+        return hotelID;
+    }
+
+    public void setHotelID(String hotelID) {
+        this.hotelID = hotelID;
+    }
+
+    public boolean isBathroom() {
+        return bathroom;
+    }
+
+    public void setBathroom(boolean bathroom) {
+        this.bathroom = bathroom;
     }
     public int getPrice() {
         return price;
@@ -26,12 +52,12 @@ public class ListRoomModel {
         this.price = price;
     }
 
-    public String getTypeOfRoom() {
-        return typeOfRoom;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setTypeOfRoom(String typeOfRoom) {
-        this.typeOfRoom = typeOfRoom;
+    public void getRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
     public boolean isNetflix() {
@@ -40,6 +66,14 @@ public class ListRoomModel {
 
     public void setNetflix(boolean netflix) {
         this.netflix = netflix;
+    }
+
+    public ArrayList<SlideModel> getImgRoom() {
+        return imgRoom;
+    }
+
+    public void setImgRoom(ArrayList<SlideModel> imgRoom) {
+        this.imgRoom = imgRoom;
     }
 
     public boolean isWifi() {

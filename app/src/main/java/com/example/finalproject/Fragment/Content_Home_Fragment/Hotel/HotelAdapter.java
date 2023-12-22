@@ -1,6 +1,7 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.Hotel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.finalproject.Fragment.Content_Booking_Fragment.HotelDetails;
 import com.example.finalproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -40,8 +43,9 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
 
     // Interface để xử lý sự kiện click
     public interface OnHotelItemClickListener {
-        void onHotelItemClick(int position);
+        void onHotelItemClick(int position, String hotelID);
     }
+
 
     private OnHotelItemClickListener onHotelItemClickListener;
 
@@ -80,10 +84,66 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
             public void onClick(View view) {
                 int adapterPosition = holder.getAdapterPosition();
                 if (adapterPosition != RecyclerView.NO_POSITION && onHotelItemClickListener != null) {
-                    onHotelItemClickListener.onHotelItemClick(adapterPosition);
+                    // Pass both position and hotel title when an item is clicked
+                    onHotelItemClickListener.onHotelItemClick(adapterPosition, hotel.getID());
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    CollectionReference hotelCollection = db.collection("hotel");
+
+                    hotelCollection.whereEqualTo("hotelID", hotel.getID()).get().addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : task.getResult()) {
+                                String hotelID = document.getString("hotelID");
+                                String hotelName = document.getString("hotelName");
+                                String hotelAddress = document.getString("hotelAddress");
+
+                                List<Boolean> hotelService = (List<Boolean>) document.get("hotelService");
+                                if (hotelService != null) {
+                                    boolean[] hotelServiceArray = new boolean[hotelService.size()];
+                                    for (int i = 0; i < hotelService.size(); i++) {
+                                        hotelServiceArray[i] = hotelService.get(i);
+                                    }
+
+                                    String hotelIntro = document.getString("hotelIntro");
+                                    String checkInNight = document.getString("checkInNight");
+                                    String checkInDay = document.getString("checkInDay");
+                                    Long hotelPrice = document.getLong("hotelPrice");
+
+                                    List<String> hotelImgRoom = (List<String>) document.get("hotelImageRoom");
+                                    if (hotelImgRoom != null) {
+                                        String[] hotelImgRoomArray = new String[hotelImgRoom.size()];
+                                        for (int i = 0; i < hotelImgRoom.size(); i++) {
+                                            hotelImgRoomArray[i] = hotelImgRoom.get(i);
+                                        }
+
+                                        Context context = view.getContext();
+                                        Intent intent = new Intent(context, HotelDetails.class);
+                                        intent.putExtra("hotelID",hotelID);
+                                        intent.putExtra("hotelName", hotelName);
+                                        intent.putExtra("hotelAddress", hotelAddress);
+                                        intent.putExtra("hotelServiceArray", hotelServiceArray);
+                                        intent.putExtra("hotelIntro", hotelIntro);
+                                        intent.putExtra("hotelPrice", hotelPrice);
+                                        intent.putExtra("checkInNight", checkInNight);
+                                        intent.putExtra("checkInDay", checkInDay);
+                                        intent.putExtra("hotelImgRoomArray", hotelImgRoomArray);
+                                        context.startActivity(intent);
+                                    } else {
+                                        Log.d("FirestoreArray", "hotelImgRoom field is null for hotelName: " + hotelName);
+                                    }
+                                } else {
+                                    Log.d("FirestoreArray", "hotelService field is null for hotelName: " + hotelName);
+                                }
+                            }
+                        }
+                    });
+
                 }
             }
         });
+
+
+
+
     }
 
 
@@ -110,6 +170,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
             tvCost = itemView.findViewById(R.id.tvCost);
             tvRate = itemView.findViewById(R.id.tvRate);
             tvDiscount = itemView.findViewById(R.id.tvDiscount);
+
         }
     }
 

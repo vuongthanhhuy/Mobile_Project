@@ -48,12 +48,12 @@ public class ChooseDiscount extends AppCompatActivity {
     private List<DiscountAvailable> getListDiscount(){
         List<DiscountAvailable> listDiscountAvailable = new ArrayList<>();
 
-        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
-        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
-        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
-        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
-        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
-        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
+//        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
+//        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
+//        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
+//        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
+//        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
+//        listDiscountAvailable.add(new DiscountAvailable("GIẢM 22% - Tối ĐA 22K (HCM)", "22%", true, true, true, new Date(123, 10, 31), new Date(123, 12, 31)));
 
         return listDiscountAvailable;
     }

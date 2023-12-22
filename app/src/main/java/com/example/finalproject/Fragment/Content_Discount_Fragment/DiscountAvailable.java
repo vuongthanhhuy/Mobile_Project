@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class DiscountAvailable {
 
-    private String title,percent;
-    private boolean typeHours,typeDay,typeNight;
+    private String title,percent, detail;
+    private boolean typeDay,typeNight;
     private Date startDay,endDay;
 
-    public DiscountAvailable(String title, String percent, boolean typeHours, boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
+    public DiscountAvailable(String title, String percent, String detail,boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
         this.title = title;
         this.percent = percent;
-        this.typeHours = typeHours;
+        this.detail = detail;
         this.typeDay = typeDay;
         this.typeNight = typeNight;
         this.startDay = startDay;
@@ -34,12 +34,12 @@ public class DiscountAvailable {
         this.percent = percent;
     }
 
-    public boolean isTypeHours() {
-        return typeHours;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setTypeHours(boolean typeHours) {
-        this.typeHours = typeHours;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public boolean isTypeDay() {
