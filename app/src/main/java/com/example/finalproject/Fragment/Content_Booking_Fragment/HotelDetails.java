@@ -26,8 +26,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class HotelDetails extends AppCompatActivity {
 
@@ -37,7 +41,7 @@ public class HotelDetails extends AppCompatActivity {
     private Button btnChooseRoom;
     private TextView tvHotelName, tvHotelAddress, tvHotelIntro, tvCheckInNight, tvCheckInDay,tvHotelPrice;
     private ImageView imageView1,imageView2,imageView3,imageView4,imageView5;
-    private String hotelID;
+    private String hotelID,checkIn,checkOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +50,23 @@ public class HotelDetails extends AppCompatActivity {
         Intent intent = getIntent();
 
         // Lấy dữ liệu từ Intent
+        checkIn = intent.getStringExtra("checkIn");
+        checkOut = intent.getStringExtra("checkOut");
+        if(checkIn == null && checkOut == null){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+            // Lấy ngày hiện tại
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            Date day = calendar.getTime();
+            Date currentDate = new Date();
+            String currentDateStr = dateFormat.format(currentDate);
+
+            String defaultTime = "20:00:00";
+            checkIn = currentDateStr + " " + defaultTime;
+            checkOut = dateFormat.format(day)+ " 12:00:00";
+        }
         hotelID = intent.getStringExtra("hotelID");
-        Log.d("id", hotelID);
         String hotelName = intent.getStringExtra("hotelName");
         String hotelAddress = intent.getStringExtra("hotelAddress");
         boolean[] hotelServiceArray = intent.getBooleanArrayExtra("hotelServiceArray");
@@ -87,12 +106,7 @@ public class HotelDetails extends AppCompatActivity {
             Glide.with(this).load(hotelImgRoomArray[3]).into(imageView4);
             Glide.with(this).load(hotelImgRoomArray[4]).into(imageView5);
         }
-        btnChooseRoom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                putDataToRoom();
-            }
-        });
+
 
     }
 
@@ -112,6 +126,13 @@ public class HotelDetails extends AppCompatActivity {
         btnChooseRoom = findViewById(R.id.btnChooseRoom);
         rcvServiceHotel = findViewById(R.id.rcvServiceHotel);
 
+        btnChooseRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                putDataToRoom();
+            }
+        });
+
         toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
@@ -123,6 +144,7 @@ public class HotelDetails extends AppCompatActivity {
             }
         });
     }
+
     private List<ServiceHotelModel> getListService(boolean[] hotelServiceArray) {
         List<ServiceHotelModel> listServiceHotel = new ArrayList<>();
         if (hotelServiceArray != null && hotelServiceArray.length > 0) {
@@ -148,47 +170,12 @@ public class HotelDetails extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot hotelDocument : task.getResult()) {
-                        String hotelId = hotelDocument.getId();
-                        CollectionReference roomCollection = hotelCollection.document(hotelId).collection("room");
-                        roomCollection.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot roomDocument : task.getResult()) {
-                                        String hotelID = hotelId;
-                                        String roomName = roomDocument.getString("roomName");
-                                        List<String> roomImage = (List<String>) roomDocument.get("roomImage");
-                                        if (roomImage != null) {
-                                            String[] roomImageArray = new String[roomImage.size()];
-                                            for (int i = 0; i < roomImage.size(); i++) {
-                                                roomImageArray[i] = roomImage.get(i);
-                                            }
+                        Intent intent = new Intent(HotelDetails.this, ListRoom.class);
+                        intent.putExtra("hotelID", hotelID);
+                        intent.putExtra("checkIn",checkIn);
+                        intent.putExtra("checkOut",checkOut);
+                        startActivity(intent);
 
-                                            List<Boolean> roomService = (List<Boolean>) roomDocument.get("roomAmenities");
-                                            if (roomService != null) {
-                                                boolean[] roomServiceArray = new boolean[roomService.size()];
-                                                for (int i = 0; i < roomService.size(); i++) {
-                                                    roomServiceArray[i] = roomService.get(i);
-                                                }
-                                                Long roomPrice = roomDocument.getLong("roomPrice");
-                                                boolean roomStatus = roomDocument.getBoolean("roomStatus");
-
-                                                Intent intent = new Intent(HotelDetails.this, ListRoom.class);
-                                                intent.putExtra("hotelID", hotelID);
-                                                intent.putExtra("roomName", roomName);
-                                                intent.putExtra("roomImage", roomImageArray);
-                                                intent.putExtra("roomService", roomServiceArray);
-                                                intent.putExtra("roomPrice", roomPrice);
-                                                intent.putExtra("roomStatus", roomStatus);
-                                                startActivity(intent);
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    Log.d("FirestoreQuery", "Error getting documents from room collection", task.getException());
-                                }
-                            }
-                        });
                     }
                 } else {
                     Log.d("FirestoreQuery", "Error getting documents from hotel collection", task.getException());

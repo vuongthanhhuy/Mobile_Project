@@ -16,7 +16,6 @@
         android:alpha="0.8"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:title="@string/searchResult"
-        app:subtitle=" "
         app:titleTextAppearance="@style/TitleTextCustom"
         app:titleCentered="true">
 

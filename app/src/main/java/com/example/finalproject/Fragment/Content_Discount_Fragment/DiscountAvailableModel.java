@@ -2,20 +2,30 @@ package com.example.finalproject.Fragment.Content_Discount_Fragment;
 
 import java.util.Date;
 
-public class DiscountAvailable {
+public class DiscountAvailableModel {
 
-    private String title,percent, detail;
+    private String title, detail, id;
+    private int percent, condition;
     private boolean typeDay,typeNight;
     private Date startDay,endDay;
 
-    public DiscountAvailable(String title, String percent, String detail,boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
+    public DiscountAvailableModel(String id, String title, int percent,int condition, String detail, boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
+        this.id = id;
         this.title = title;
         this.percent = percent;
+        this.condition = condition;
         this.detail = detail;
         this.typeDay = typeDay;
         this.typeNight = typeNight;
         this.startDay = startDay;
         this.endDay = endDay;
+    }
+    public String getID() {
+        return id;
+    }
+
+    public void setID(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -26,12 +36,20 @@ public class DiscountAvailable {
         this.title = title;
     }
 
-    public String getPercent() {
+    public int getPercent() {
         return percent;
     }
 
-    public void setPercent(String percent) {
+    public void setPercent(int percent) {
         this.percent = percent;
+    }
+
+    public int setCondition() {
+        return condition;
+    }
+
+    public void setCondition(int condition) {
+        this.condition = condition;
     }
 
     public String getDetail() {

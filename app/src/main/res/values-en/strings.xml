@@ -54,7 +54,7 @@
     <string name="typeDay">Daily</string>
     <string name="typeNight">Overnight</string>
     <string name="btnUse">Use</string>
-    <string name="discountAvailable">Available</string>
+    <string name="discountAvailableModel">Available</string>
     <string name="discountHistory">History</string>
     <string name="expired">EXPIRED: </string>
     <string name="titleDiscount">Discount</string>

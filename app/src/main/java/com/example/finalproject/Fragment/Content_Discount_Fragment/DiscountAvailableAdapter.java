@@ -1,35 +1,51 @@
 package com.example.finalproject.Fragment.Content_Discount_Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finalproject.Fragment.Content_Booking_Fragment.Confirm_Payment;
+import com.example.finalproject.Fragment.Content_Booking_Fragment.Dialog_Select_Night_Day;
 import com.example.finalproject.R;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
-    public class DiscountAvailableAdapter extends RecyclerView.Adapter<DiscountAvailableAdapter.DiscountViewHolder>{
-    private List<DiscountAvailable> mDiscountAvailable;
+public class DiscountAvailableAdapter extends RecyclerView.Adapter<DiscountAvailableAdapter.DiscountViewHolder>{
+    private List<DiscountAvailableModel> mDiscountAvailableModel;
     private Context mContext;
     private int  selectedTabPosition = 1;
+    private OnUseClickListener onUseClickListener;
 
     public DiscountAvailableAdapter(Context mContext){
         this.mContext = mContext;
 
     }
-    public void setData(List<DiscountAvailable> list){
-        this.mDiscountAvailable = list;
+    public void setData(List<DiscountAvailableModel> list){
+        this.mDiscountAvailableModel = list;
         notifyDataSetChanged();
     }
 
+    public interface OnUseClickListener {
+        void onUseClick(String promotionID, int discountPercent);
+    }
+
+    public void setOnUseClickListener(OnUseClickListener listener) {
+        this.onUseClickListener = listener;
+    }
 
     @NonNull
     @Override
@@ -42,44 +58,46 @@ import java.util.List;
 
     @Override
     public void onBindViewHolder(@NonNull DiscountViewHolder holder, int position) {
-        DiscountAvailable discountAvailable = mDiscountAvailable.get(position);
-        if(discountAvailable == null){
+        DiscountAvailableModel discountAvailableModel = mDiscountAvailableModel.get(position);
+        if(discountAvailableModel == null){
             return;
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String typeDay = mContext.getResources().getString(R.string.typeDay);
         String typeNight = mContext.getResources().getString(R.string.typeNight);
-        String startDay = dateFormat.format(discountAvailable.getStartDay());
-        String endDay = dateFormat.format(discountAvailable.getEndDay());
+        String startDay = dateFormat.format(discountAvailableModel.getStartDay());
+        String endDay = dateFormat.format(discountAvailableModel.getEndDay());
 
-        holder.tvName.setText(discountAvailable.getTitle());
-        holder.tvPercent.setText(discountAvailable.getPercent()+"%");
-        holder.tvDetail.setText(discountAvailable.getDetail());
-        if(!discountAvailable.isTypeNight()){
+        holder.tvName.setText(discountAvailableModel.getTitle());
+        holder.tvPercent.setText(discountAvailableModel.getPercent()+"%");
+        holder.tvDetail.setText(discountAvailableModel.getDetail());
+        if(!discountAvailableModel.isTypeNight()){
             holder.isNight.setVisibility(View.GONE);
         }else{
             holder.isNight.setText(typeNight);
         }
-        if(!discountAvailable.isTypeDay()){
+        if(!discountAvailableModel.isTypeDay()){
             holder.isDay.setVisibility(View.GONE);
         }else{
             holder.isDay.setText(typeDay);
         }
-            Log.d("asdas","222");
         holder.tvDateStart.setText(startDay);
         holder.tvDateEnd.setText(endDay);
         holder.btnUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (onUseClickListener != null) {
+                    onUseClickListener.onUseClick(discountAvailableModel.getID(), discountAvailableModel.getPercent());
+                }
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
-        if(mDiscountAvailable != null){
-            return mDiscountAvailable.size();
+        if(mDiscountAvailableModel != null){
+            return mDiscountAvailableModel.size();
         }
         return 0;
     }

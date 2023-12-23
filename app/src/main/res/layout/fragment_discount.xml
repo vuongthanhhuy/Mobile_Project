@@ -35,10 +35,10 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/discountAvailable"
+            android:id="@+id/discountAvailableModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/discountAvailable" />
+            android:text="@string/discountAvailableModel" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/discountHistory"

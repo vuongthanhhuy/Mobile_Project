@@ -27,6 +27,7 @@ import com.example.finalproject.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class Content_Booking_Day extends Fragment {
@@ -36,6 +37,7 @@ public class Content_Booking_Day extends Fragment {
     private TextView tvCheckIn;
     private TextView tvCheckOut;
     private Button btnSearchDay;
+    private String defaultTime;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,6 +49,20 @@ public class Content_Booking_Day extends Fragment {
         tvCheckOut = view.findViewById(R.id.tvcheckOut);
         btnSearchDay = view.findViewById(R.id.btnSearchDay);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+        // Lấy ngày hiện tại
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        Date day = calendar.getTime();
+        Date currentDate = new Date();
+        String currentDateStr = dateFormat.format(currentDate);
+
+        defaultTime = " 12:00:00";
+        String checkIn = currentDateStr + defaultTime;
+        tvCheckIn.setText(checkIn);
+        String nextDay = dateFormat.format(day)+ " 12:00:00";
+        tvCheckOut.setText(nextDay);
         btnSearchDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +102,21 @@ public class Content_Booking_Day extends Fragment {
                 TextView tvCheckInDay = dialog.findViewById(R.id.tvCheckInDay);
                 TextView tvCheckOutDay = dialog.findViewById(R.id.tvCheckOutDay);
                 EditText edtNumDay = dialog.findViewById(R.id.numDay);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+                // Lấy ngày hiện tại
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
+                Date day = calendar.getTime();
+                Date currentDate = new Date();
+                String currentDateStr = dateFormat.format(currentDate);
+
+                String timeCheckInDay =currentDateStr + defaultTime;
+                tvCheckInDay.setText(timeCheckInDay);
+                String nextDay = dateFormat.format(day)+ " 12:00:00";
+                tvCheckOutDay.setText(nextDay);
+
                 btnClose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -121,13 +152,14 @@ public class Content_Booking_Day extends Fragment {
 
                         Calendar selectedDate = Calendar.getInstance();
                         selectedDate.set(year, month, dayOfMonth);
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                         String currentDay = sdf.format(selectedDate.getTime());
-                        // Thêm 1 ngày vào ngày đã chọn
                         selectedDate.add(Calendar.DATE, numDays);
                         String nextDay = sdf.format(selectedDate.getTime());
-                        tvCheckInDay.setText(currentDay);
-                        tvCheckOutDay.setText(nextDay);
+                        String timeCheckInDay = currentDay + " 12:00:00";
+                        String timeCheckOutDay = nextDay + " 12:00:00";
+                        tvCheckInDay.setText(timeCheckInDay);
+                        tvCheckOutDay.setText(timeCheckOutDay);
 
                     }
                 });

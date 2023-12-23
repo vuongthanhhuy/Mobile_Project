@@ -40,38 +40,31 @@ public void setData(List<DiscountHistoryModel> list){
 
     @Override
     public void onBindViewHolder(@NonNull DiscountViewHolder holder, int position) {
-    DiscountHistoryModel discountAvailable = mDiscountHistoryModel.get(position);
-    if(discountAvailable == null){
+    DiscountHistoryModel discountHistory = mDiscountHistoryModel.get(position);
+    if(discountHistory == null){
         return;
     }
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    String typeHour = mContext.getResources().getString(R.string.typeHours);
     String typeDay = mContext.getResources().getString(R.string.typeDay);
     String typeNight = mContext.getResources().getString(R.string.typeNight);
-    String startDay = dateFormat.format(discountAvailable.getStartDay());
-    String endDay = dateFormat.format(discountAvailable.getEndDay());
-    String expired = mContext.getResources().getString(R.string.expired) + " "+dateFormat.format(discountAvailable.getExpired());
+    String startDay = dateFormat.format(discountHistory.getStartDay());
+    String endDay = dateFormat.format(discountHistory.getEndDay());
 
-    holder.title.setText(discountAvailable.getTitle());
-    holder.percent.setText(discountAvailable.getPercent());
-    if(!discountAvailable.isTypeHours()){
-        holder.typeHours.setVisibility(View.GONE);
-    }else{
-        holder.typeHours.setText(typeHour);
-    }
-    if(!discountAvailable.isTypeNight()){
+    holder.title.setText(discountHistory.getTitle());
+    holder.percent.setText(discountHistory.getPercent()+"%");
+    if(!discountHistory.isTypeNight()){
         holder.typeNight.setVisibility(View.GONE);
     }else{
         holder.typeNight.setText(typeNight);
     }
-    if(!discountAvailable.isTypeDay()){
+    if(!discountHistory.isTypeDay()){
         holder.typeDay.setVisibility(View.GONE);
     }else{
         holder.typeDay.setText(typeDay);
     }
     holder.startDays.setText(startDay);
     holder.endDays.setText(endDay);
-    holder.expired.setText(expired);
+    holder.expired.setText("Hết hạn");
 }
 
 @Override

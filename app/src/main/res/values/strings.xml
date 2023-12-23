@@ -54,7 +54,7 @@
     <string name="typeDay">Theo ngày</string>
     <string name="typeNight">Qua đêm</string>
     <string name="btnUse">SỬ\nDỤNG</string>
-    <string name="discountAvailable">Có thể sử dụng</string>
+    <string name="discountAvailableModel">Có thể sử dụng</string>
     <string name="discountHistory">Lịch sử</string>
     <string name="expired">Hết hạn: </string>
     <string name="titleDiscount">Ưu đãi</string>

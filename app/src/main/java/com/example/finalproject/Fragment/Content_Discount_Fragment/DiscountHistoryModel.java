@@ -4,21 +4,20 @@ import java.util.Date;
 
 public class DiscountHistoryModel {
 
-    private String title,percent;
-    private boolean typeHours,typeDay,typeNight;
-    private Date startDay,endDay,expired;
+    private String title, detail;
+    private int percent;
+    private boolean typeDay,typeNight;
+    private Date startDay,endDay;
 
 
-
-    public DiscountHistoryModel(String title, String percent, boolean typeHours, boolean typeDay, boolean typeNight, Date startDay, Date endDay, Date expired) {
+    public DiscountHistoryModel(String title, int percent, String detail, boolean typeDay, boolean typeNight, Date startDay, Date endDay) {
         this.title = title;
         this.percent = percent;
-        this.typeHours = typeHours;
+        this.detail = detail;
         this.typeDay = typeDay;
         this.typeNight = typeNight;
         this.startDay = startDay;
         this.endDay = endDay;
-        this.expired = expired;
     }
 
     public String getTitle() {
@@ -29,20 +28,20 @@ public class DiscountHistoryModel {
         this.title = title;
     }
 
-    public String getPercent() {
+    public int getPercent() {
         return percent;
     }
 
-    public void setPercent(String percent) {
+    public void setPercent(int percent) {
         this.percent = percent;
     }
 
-    public boolean isTypeHours() {
-        return typeHours;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setTypeHours(boolean typeHours) {
-        this.typeHours = typeHours;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public boolean isTypeDay() {
@@ -75,12 +74,5 @@ public class DiscountHistoryModel {
 
     public void setEndDay(Date endDay) {
         this.endDay = endDay;
-    }
-    public Date getExpired() {
-        return expired;
-    }
-
-    public void setExpired(Date expired) {
-        this.expired = expired;
     }
 }

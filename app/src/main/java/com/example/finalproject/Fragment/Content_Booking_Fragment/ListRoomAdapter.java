@@ -35,17 +35,18 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
 
     private List<ListRoomModel> mListRoom;
     private List<Hotel> mHotel;
-    private String tvCheckIn, tvCheckOut, name, phoneNumber;
+    private String checkIn, checkOut, name, phoneNumber;
+    private boolean typeBooking = false;
 
-    public ListRoomAdapter(String tvCheckIn, String tvCheckOut) {
-        this.tvCheckIn = tvCheckIn;
-        this.tvCheckOut = tvCheckOut;
-    }
     public void setData(List<ListRoomModel> list){
         this.mListRoom = list;
         notifyDataSetChanged();
     }
-
+    public void updateCheckInOut(String checkIn, String checkOut) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public ListRoomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,9 +60,8 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
         if(listRoom == null){
             return;
         }
-        fetchUserData();
         holder.typeOfRoom.setText(listRoom.getRoomName());
-        String priceRoom = listRoom.getPrice()+"000đ";
+        String priceRoom = listRoom.getPrice()+"đ";
         holder.price.setText(priceRoom);
         StringBuilder stringBuilder = new StringBuilder();
         if (listRoom.isWifi()) {
@@ -87,6 +87,11 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
         if (stringBuilder.length() > 0) {
             stringBuilder.setLength(stringBuilder.length() - 3);
         }
+        if (checkIn != null && checkIn.contains("12:00:00")) {
+             typeBooking = true;
+        }else{
+             typeBooking = false;
+        }
         holder.imageSlider.setImageList(listRoom.getImgRoom());
         holder.service.setText(stringBuilder.toString());
         holder.btnBookingRoom.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +114,7 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         if (task.isSuccessful()) {
                                             for (QueryDocumentSnapshot roomDocument : task.getResult()) {
+
                                                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                                                 FirebaseUser currentUser = mAuth.getCurrentUser();
                                                 String userId = currentUser.getUid();
@@ -118,15 +124,18 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
                                                             if (documentSnapshot.exists()) {
                                                                 name = documentSnapshot.getString("name");
                                                                 phoneNumber = documentSnapshot.getString("phoneNumber");
+                                                                String roomID = roomDocument.getString("roomID");
                                                                 String roomName = roomDocument.getString("roomName");
                                                                 Long roomPrice = roomDocument.getLong("roomPrice");
-                                                                String checkIn = tvCheckIn;
-                                                                String checkOut = tvCheckOut;
                                                                 String userName = name;
                                                                 String userPhoneNumber = phoneNumber;
                                                                 Intent intent = new Intent(v.getContext(), Confirm_Payment.class);
+                                                                intent.putExtra("hotelID",hotelId);
+                                                                intent.putExtra("userID", userId);
+                                                                intent.putExtra("roomID", roomID);
                                                                 intent.putExtra("hotelName",hotelName);
                                                                 intent.putExtra("hotelAddress",hotelAddress);
+                                                                intent.putExtra("typeBooking",typeBooking);
                                                                 intent.putExtra("roomName",roomName);
                                                                 intent.putExtra("roomPrice",roomPrice);
                                                                 intent.putExtra("checkIn",checkIn);
@@ -184,8 +193,5 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
 
         }
     }
-    private void fetchUserData(){
 
-
-    }
 }

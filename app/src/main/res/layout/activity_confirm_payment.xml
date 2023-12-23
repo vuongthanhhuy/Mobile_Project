@@ -133,17 +133,6 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/bgday" />
 
-                    <TextView
-                        android:id="@+id/textOverlay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1 ngày"
-                        android:drawableTop="@drawable/baseline_dark_mode_24"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:background="@android:color/transparent" />
 
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
@@ -385,7 +374,7 @@
                         android:textSize="14sp" />
 
                     <RadioButton
-                        android:id="@+id/enRad"
+                        android:id="@+id/vnpay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"

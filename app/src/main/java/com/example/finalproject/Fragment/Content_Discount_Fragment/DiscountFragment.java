@@ -46,7 +46,7 @@ public class DiscountFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewpagerDiscount);
         tabLayout.setupWithViewPager(viewPager);
 
-        String title1 = getResources().getString(R.string.discountAvailable);
+        String title1 = getResources().getString(R.string.discountAvailableModel);
         String title2 = getResources().getString(R.string.discountHistory);
         discountFragmentPagerAdapter = new DiscountFragmentPagerAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         discountFragmentPagerAdapter.addFragmentDiscount(new Content_Discount_Available(), title1);

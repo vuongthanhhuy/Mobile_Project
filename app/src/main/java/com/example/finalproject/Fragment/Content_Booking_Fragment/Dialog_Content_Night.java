@@ -16,14 +16,17 @@ import com.example.finalproject.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 
 public class Dialog_Content_Night extends Fragment {
 
+    private String defaultTime;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,20 +40,32 @@ public class Dialog_Content_Night extends Fragment {
         TextView tvCheckOutNight = view.findViewById(R.id.tvCheckOutNight);
         ChipGroup chipGroupDay = view.findViewById(R.id.chipGroupDay);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+        // Lấy ngày hiện tại
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        Date day = calendar.getTime();
+        Date currentDate = new Date();
+        String currentDateStr = dateFormat.format(currentDate);
+
+        defaultTime = " 20:00:00";
+        tvCheckInNight.setText(currentDateStr);
+        tvTimeCheckInNight.setText(defaultTime);
+        String nextDay = dateFormat.format(day)+ " 12:00:00";
+        tvCheckOutNight.setText(nextDay);
+
         chipGroupDay.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                if(checkedIds.isEmpty()){
-                    Chip chip = view.findViewById(R.id.tamgio);
-                    tvTimeCheckInNight.setText(chip.getText());
-                } else {
-                    StringBuilder stringBuilder = new StringBuilder();
-                    for (int i : checkedIds){
-                        Chip chip = view.findViewById(i);
-                        stringBuilder.append(" ").append(chip.getText());
-                    }
-                    tvTimeCheckInNight.setText(stringBuilder.toString().replaceFirst(" ",""));
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i : checkedIds){
+                    Chip chip = view.findViewById(i);
+                    stringBuilder.append(" ").append(chip.getText());
                 }
+                String timeFormat = stringBuilder.toString().replaceFirst("   ","")+":00";
+                tvTimeCheckInNight.setText(timeFormat);
+
             }
         });
 
@@ -60,13 +75,12 @@ public class Dialog_Content_Night extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Calendar selectedDate = Calendar.getInstance();
                 selectedDate.set(year, month, dayOfMonth);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                 String currentDay = sdf.format(selectedDate.getTime());
-                // Thêm 1 ngày vào ngày đã chọn
                 selectedDate.add(Calendar.DATE, 1);
                 String nextDay = sdf.format(selectedDate.getTime());
                 tvCheckInNight.setText(currentDay);
-                tvCheckOutNight.setText("12:00 "+nextDay);
+                tvCheckOutNight.setText(nextDay + "  12:00:00");
 
             }
         });

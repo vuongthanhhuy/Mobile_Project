@@ -19,10 +19,12 @@ import com.example.finalproject.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class Dialog_Content_Day extends Fragment {
     private Context context;
+    private String defaultTime;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,6 +36,20 @@ public class Dialog_Content_Day extends Fragment {
         TextView tvCheckOutDay = view.findViewById(R.id.tvCheckOutDay);
         EditText edtNumDay = view.findViewById(R.id.numDay);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+        // Lấy ngày hiện tại
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        Date day = calendar.getTime();
+        Date currentDate = new Date();
+        String currentDateStr = dateFormat.format(currentDate);
+
+        defaultTime = " 12:00:00";
+        String checkIn = currentDateStr + " " + defaultTime;
+        tvCheckInDay.setText(checkIn);
+        String nextDay = dateFormat.format(day)+ " 12:00:00";
+        tvCheckOutDay.setText(nextDay);
         selectedDateCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -48,11 +64,11 @@ public class Dialog_Content_Day extends Fragment {
 
                 Calendar selectedDate = Calendar.getInstance();
                 selectedDate.set(year, month, dayOfMonth);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
-                String currentDay = sdf.format(selectedDate.getTime());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                String currentDay = sdf.format(selectedDate.getTime())+ defaultTime;
                 // Thêm 1 ngày vào ngày đã chọn
                 selectedDate.add(Calendar.DATE, numDays);
-                String nextDay = sdf.format(selectedDate.getTime());
+                String nextDay = sdf.format(selectedDate.getTime())+ defaultTime;
                 tvCheckInDay.setText(currentDay);
                 tvCheckOutDay.setText(nextDay);
 

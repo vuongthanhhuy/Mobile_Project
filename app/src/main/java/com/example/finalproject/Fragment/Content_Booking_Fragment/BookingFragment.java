@@ -2,12 +2,14 @@ package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,14 @@ import com.example.finalproject.Fragment.Content_Discount_Fragment.Content_Disco
 import com.example.finalproject.Fragment.Content_Discount_Fragment.Content_Discount_History;
 import com.example.finalproject.Fragment.Content_Discount_Fragment.DiscountFragmentPagerAdapter;
 import com.example.finalproject.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class BookingFragment extends Fragment {
@@ -55,4 +64,5 @@ public class BookingFragment extends Fragment {
 
         return view;
     }
+
 }
