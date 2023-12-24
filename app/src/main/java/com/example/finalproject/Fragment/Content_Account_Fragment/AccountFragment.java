@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproject.Fragment.Content_Account_Fragment.Content_Terms_Privacy.Terms_PrivacyPolicy;
+import com.example.finalproject.Login.Login;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,8 +25,8 @@ import java.util.Locale;
 
 public class AccountFragment extends Fragment {
 
-    private TextView tvTermsNprivacy,changeLanguage,tvName, tvEmail,tvPhoneNumber;
-
+    private TextView tvTermsNprivacy,changeLanguage,tvName, tvEmail,tvPhoneNumber,tvSignOut,tvHistoryBooking;
+    private String userId;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,16 +35,37 @@ public class AccountFragment extends Fragment {
         tvName = view.findViewById(R.id.tvName);
         tvEmail = view.findViewById(R.id.tvEmail);
         tvPhoneNumber = view.findViewById(R.id.tvPhoneNumber);
+        tvSignOut = view.findViewById(R.id.tvSignOut);
+        tvHistoryBooking = view.findViewById(R.id.tvHistoryBooking);
+        tvTermsNprivacy = view.findViewById(R.id.termsNprivacy);
+
 
         Locale currentLocale = getResources().getConfiguration().locale;
         String currentLanguage = currentLocale.getLanguage();
 
-        tvTermsNprivacy = view.findViewById(R.id.termsNprivacy);
         if ("vi".equals(currentLanguage)) {
             changeLanguage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.outline_language_24, 0, R.drawable.vietnam, 0);
         } else if ("en".equals(currentLanguage)) {
             changeLanguage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.outline_language_24, 0, R.drawable.united_states_of_america, 0);
         }
+
+
+        evenClick();
+        fetchUserData();
+        return view;
+
+    }
+
+
+    private void evenClick(){
+
+        tvSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Gọi hàm đăng xuất
+                signOut();
+            }
+        });
 
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +92,6 @@ public class AccountFragment extends Fragment {
 
         });
 
-        fetchUserData();
         tvTermsNprivacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,10 +99,23 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        return view;
 
+        tvHistoryBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HistoryBooking.class);
+                intent.putExtra("userID",userId);
+                startActivity(intent);
+            }
+        });
     }
-
+    private void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(getActivity(), Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        getActivity().finish();
+    }
 
 
     private void fetchUserData(){
@@ -89,7 +123,7 @@ public class AccountFragment extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
-            String userId = currentUser.getUid();
+            userId = currentUser.getUid();
 
             // Reference to Firestore instance
             FirebaseFirestore db = FirebaseFirestore.getInstance();

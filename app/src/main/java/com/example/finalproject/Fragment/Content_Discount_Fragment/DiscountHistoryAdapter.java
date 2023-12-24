@@ -85,7 +85,6 @@ public class DiscountViewHolder extends RecyclerView.ViewHolder{
 
         title = itemView.findViewById(R.id.disTitle);
         percent = itemView.findViewById(R.id.disPercent);
-        typeHours = itemView.findViewById(R.id.typeHours);
         typeDay = itemView.findViewById(R.id.typeDay);
         typeNight = itemView.findViewById(R.id.typeNight);
         startDays = itemView.findViewById(R.id.startDays);

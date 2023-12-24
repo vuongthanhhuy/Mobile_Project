@@ -174,6 +174,8 @@ public class HotelDetails extends AppCompatActivity {
                         intent.putExtra("hotelID", hotelID);
                         intent.putExtra("checkIn",checkIn);
                         intent.putExtra("checkOut",checkOut);
+                        Log.d("checkIn",checkIn);
+                        Log.d("checkOut",checkOut);
                         startActivity(intent);
 
                     }

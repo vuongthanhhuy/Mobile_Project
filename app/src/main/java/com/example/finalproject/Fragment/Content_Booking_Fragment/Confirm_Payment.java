@@ -71,7 +71,9 @@ public class Confirm_Payment extends AppCompatActivity {
         tvHotel.setText(hotelName);
         tvAddress.setText(hotelAddress);
         tvRoom.setText(roomName);
-        tvPrice.setText(roomPriceInt+"đ");
+        String priceString = priceRoom+"đ";
+        tvPrice.setText(priceString);
+        tvTotalPrice.setText(priceString);
         tvCheckInCf.setText(checkIn);
         tvCheckOutCf.setText(checkOut);
         tvUserName.setText(userName);
@@ -111,6 +113,9 @@ public class Confirm_Payment extends AppCompatActivity {
         chooseDiscount = findViewById(R.id.tvChooseDiscount);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        int discount = 0;
+        String discountString = "-"+discount+"đ";
+        tvDiscount.setText(discountString);
 
     }
 

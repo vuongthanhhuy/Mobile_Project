@@ -106,6 +106,7 @@
     <string name="price">Tiền phòng</string>
     <string name="totalPrice">Tổng thanh toán</string>
     <string name="searchResult">Kết quả tìm kiếm</string>
+    <string name="historyBooking">Lịch sử đặt phòng</string>
 
 
 </resources>

@@ -130,8 +130,9 @@ public class ListRoom extends AppCompatActivity {
                                 .get()
                                 .addOnCompleteListener(task2 -> {
                                     if (task2.isSuccessful()) {
+                                        Log.d("roomID",roomID);
+
                                         int count = task2.getResult().size();
-                                        Log.d("count",count+"");
                                         int count2 = 0;
                                         for (QueryDocumentSnapshot bookingDocument : task2.getResult()) {
                                             // Logic kiểm tra sự sẵn có của khách sạn
@@ -139,9 +140,12 @@ public class ListRoom extends AppCompatActivity {
                                             String endDateBooking = bookingDocument.getString("endDate");
                                             Date dateStartBooking = convertStringToDate(startDateBooking);
                                             Date dateEndBooking = convertStringToDate(endDateBooking);
-                                            Date dateStartSearch = convertStringToDate(checkInBefore);
-                                            Date dateEndSearch = convertStringToDate(checkOutBefore);
-
+                                            Date dateStartSearch = convertStringToDate(tvCheckIn.getText().toString());
+                                            Date dateEndSearch = convertStringToDate(tvCheckOut.getText().toString());
+                                            Log.d("dateStartBooking",startDateBooking+"");
+                                            Log.d("dateEndBooking",endDateBooking+"");
+                                            Log.d("dateStartSearch",tvCheckOut.getText().toString()+"");
+                                            Log.d("dateEndSearch",tvCheckIn.getText().toString()+"");
 
                                             if (dateStartBooking != null && dateEndBooking != null) {
                                                 if ((dateStartBooking.before(dateStartSearch) && dateEndBooking.before(dateStartSearch))
@@ -151,6 +155,9 @@ public class ListRoom extends AppCompatActivity {
                                                 }
                                             }
                                         }
+                                        Log.d("count",count+"");
+                                        Log.d("count2",count2+"");
+
                                         if (count == count2) {
                                             String roomName = roomDocument.getString("roomName");
                                             List<String> roomImage = (List<String>) roomDocument.get("roomImage");
@@ -172,14 +179,13 @@ public class ListRoom extends AppCompatActivity {
                                                     }
                                                     long roomPrice = roomDocument.getLong("roomPrice");
                                                     int roomPriceInt = (int) roomPrice;
-                                                    boolean roomStatus = roomDocument.getBoolean("roomStatus");
                                                     boolean hasService1 = roomServiceArray[0];
                                                     boolean hasService2 = roomServiceArray[1];
                                                     boolean hasService3 = roomServiceArray[2];
                                                     boolean hasService4 = roomServiceArray[3];
                                                     boolean hasService5 = roomServiceArray[4];
                                                     boolean hasService6 = roomServiceArray[5];
-
+                                                    Log.d("add","add");
                                                     listRoom.add(new ListRoomModel(hotelID,imageList, roomPriceInt, roomName, hasService1, hasService2, hasService3, hasService4, hasService5,hasService6));
 
                                                 }

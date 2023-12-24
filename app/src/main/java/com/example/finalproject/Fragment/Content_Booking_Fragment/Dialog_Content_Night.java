@@ -49,7 +49,7 @@ public class Dialog_Content_Night extends Fragment {
         Date currentDate = new Date();
         String currentDateStr = dateFormat.format(currentDate);
 
-        defaultTime = " 20:00:00";
+        defaultTime = "20:00:00";
         tvCheckInNight.setText(currentDateStr);
         tvTimeCheckInNight.setText(defaultTime);
         String nextDay = dateFormat.format(day)+ " 12:00:00";
@@ -63,7 +63,7 @@ public class Dialog_Content_Night extends Fragment {
                     Chip chip = view.findViewById(i);
                     stringBuilder.append(" ").append(chip.getText());
                 }
-                String timeFormat = stringBuilder.toString().replaceFirst("   ","")+":00";
+                String timeFormat = stringBuilder.toString().replaceFirst(" ","")+":00";
                 tvTimeCheckInNight.setText(timeFormat);
 
             }
@@ -80,7 +80,7 @@ public class Dialog_Content_Night extends Fragment {
                 selectedDate.add(Calendar.DATE, 1);
                 String nextDay = sdf.format(selectedDate.getTime());
                 tvCheckInNight.setText(currentDay);
-                tvCheckOutNight.setText(nextDay + "  12:00:00");
+                tvCheckOutNight.setText(nextDay + " 12:00:00");
 
             }
         });
