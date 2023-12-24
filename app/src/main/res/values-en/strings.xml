@@ -101,7 +101,7 @@
     <string name="contentDiscount">Enjoy booking with special offers</string>
     <string name="paymentMethod">Payment Method</string>
     <string name="cash">Pay at the hotel</string>
-    <string name="vnpay">VNPAY Wallet</string>
+    <string name="zaloPay">ZaloPay Wallet</string>
     <string name="paymentDetails">Payment Details</string>
     <string name="price">Price</string>
     <string name="totalPrice">Total Price</string>

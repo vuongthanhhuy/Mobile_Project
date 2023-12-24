@@ -27,7 +27,17 @@
             android:exported="false" />
         <activity
             android:name=".Fragment.Content_Booking_Fragment.Confirm_Payment"
-            android:exported="false" />
+            android:exported="true"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="demozpdk"
+                    android:host="app" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Fragment.Content_Booking_Fragment.Dialog_Select_Night_Day"
             android:exported="false" />
@@ -47,12 +57,12 @@
             android:name=".Login.Login"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".Fragment.Content_Account_Fragment.Content_Terms_Privacy.Terms_PrivacyPolicy"

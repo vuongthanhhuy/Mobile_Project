@@ -374,7 +374,7 @@
                         android:textSize="14sp" />
 
                     <RadioButton
-                        android:id="@+id/vnpay"
+                        android:id="@+id/zalopay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
@@ -382,7 +382,7 @@
                         android:drawableLeft="@drawable/vnpay"
                         android:drawablePadding="10dp"
                         android:layoutDirection="rtl"
-                        android:text="@string/vnpay"
+                        android:text="@string/zaloPay"
                         android:textAlignment="textStart"
                         android:textSize="14sp" />
 

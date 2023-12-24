@@ -101,7 +101,7 @@
     <string name="contentDiscount">Tận hưỡng đặt phòng với ưu đãi</string>
     <string name="paymentMethod">Phương thức thanh toán</string>
     <string name="cash">Thanh toán tại khách sạn</string>
-    <string name="vnpay">Ví VNPAY</string>
+    <string name="zaloPay">Ví ZaloPay</string>
     <string name="paymentDetails">Chi tiết thanh toán</string>
     <string name="price">Tiền phòng</string>
     <string name="totalPrice">Tổng thanh toán</string>

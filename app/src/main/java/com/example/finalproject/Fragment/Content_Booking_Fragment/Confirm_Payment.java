@@ -1,13 +1,16 @@
 package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,10 +22,13 @@ import android.widget.Toast;
 import com.example.finalproject.Fragment.Content_Discount_Fragment.DiscountAvailableAdapter;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
+import com.example.finalproject.zalo.CreateOrder;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,15 +36,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import vn.zalopay.sdk.Environment;
+import vn.zalopay.sdk.ZaloPayError;
+import vn.zalopay.sdk.ZaloPaySDK;
+import vn.zalopay.sdk.listeners.PayOrderListener;
+
 public class Confirm_Payment extends AppCompatActivity {
     private Toolbar toolbar;
     private Button btnPayment;
     private ImageView imgTypeBooking;
     private TextView chooseDiscount,tvHotel,tvRoom,tvAddress, tvCheckInCf, tvCheckOutCf, tvUserName,tvUserPhoneNumber,tvPrice,tvDiscount,tvTotalPrice;
-    private RadioButton rdbCash, rdbVNPay;
+    private RadioButton rdbCash, rdbZaloPay;
     private int priceRoom;
-    private String hotelID,roomID,userID, hotelName, hotelAddress, roomName;
+    private String hotelID,roomID,userID, hotelName, hotelAddress, roomName, totalPriceString;
     private boolean typeBooking;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +61,10 @@ public class Confirm_Payment extends AppCompatActivity {
         eventClick();
 
 
+        //zalo
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        ZaloPaySDK.init(553, Environment.SANDBOX);
     }
 
     private void fetchDataIntent() {
@@ -108,7 +124,7 @@ public class Confirm_Payment extends AppCompatActivity {
         imgTypeBooking = findViewById(R.id.imgTypeBooking);
         rdbCash = findViewById(R.id.cash);
         rdbCash.setChecked(true);
-        rdbVNPay = findViewById(R.id.vnpay);
+        rdbZaloPay = findViewById(R.id.zalopay);
         btnPayment = findViewById(R.id.btnPayment);
         chooseDiscount = findViewById(R.id.tvChooseDiscount);
         toolbar = findViewById(R.id.toolbar);
@@ -134,11 +150,82 @@ public class Confirm_Payment extends AppCompatActivity {
                     Toast.makeText(Confirm_Payment.this, "Đặt phòng thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Confirm_Payment.this, MainActivity.class);
                     startActivity(intent);
+                }else if(rdbZaloPay.isChecked()){
+                    requestZalo();
                 }
             }
         });
     }
 
+    private void requestZalo(){
+        CreateOrder orderApi = new CreateOrder();
+
+        try {
+            JSONObject data = orderApi.createOrder("10000");
+            String code = data.getString("returncode");
+            Log.d("code",code);
+            if (code.equals("1")) {
+                String token = data.getString("zptranstoken");
+                Log.d("token",token);
+                ZaloPaySDK.getInstance().payOrder(Confirm_Payment.this, token, "demozpdk://app", new PayOrderListener() {
+                    @Override
+                    public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Confirm_Payment.this, "Thanh toan thanh cong", Toast.LENGTH_SHORT).show();
+                                addBookingInformation();
+                                Intent intent = new Intent(Confirm_Payment.this, MainActivity.class);
+                                startActivity(intent);
+
+                            }
+
+                        });
+                    }
+
+                    @Override
+                    public void onPaymentCanceled(String zpTransToken, String appTransID) {
+                        new AlertDialog.Builder(Confirm_Payment.this)
+                                .setTitle("User Cancel Payment")
+                                .setMessage(String.format("zpTransToken: %s \n", zpTransToken))
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(Confirm_Payment.this, "Thanh toan that bai", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Confirm_Payment.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null).show();
+                    }
+
+                    @Override
+                    public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
+                        new AlertDialog.Builder(Confirm_Payment.this)
+                                .setTitle("Payment Fail")
+                                .setMessage(String.format("ZaloPayErrorCode: %s \nTransToken: %s", zaloPayError.toString(), zpTransToken))
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(Confirm_Payment.this, "Thanh toan that bai", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null).show();
+                    }
+                });
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ZaloPaySDK.getInstance().onResult(intent);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -149,12 +236,12 @@ public class Confirm_Payment extends AppCompatActivity {
             String discount = "-"+percent+"đ";
             tvDiscount.setText(discount);
             int totalPrice = priceRoom - percent;
-            String totalPriceString = totalPrice + "đ";
+            totalPriceString = totalPrice + "đ";
             tvTotalPrice.setText(totalPriceString);
         }
     }
 
-    private void addBookingInformation() {
+    private String addBookingInformation() {
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         String pattern = "dd/MM/yyyy HH:mm:ss";
@@ -198,5 +285,6 @@ public class Confirm_Payment extends AppCompatActivity {
                         Log.w("Confirm_Payment", "Error adding booking information", e);
                     }
                 });
+        return bookingID;
     }
 }
