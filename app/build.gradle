@@ -66,7 +66,8 @@ dependencies {
     //slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
     //zalo
-    implementation fileTree(dir: 'D:\\Tailieu\\code\\Nam 3\\Mobile\\zalopay', include: ['*.aar', '*.jar'], exclude: [])
+    def zalopayDir = file('../zalopay')
+    implementation fileTree(dir: zalopayDir, include: ['*.aar', '*.jar'], exclude: [])
     implementation("com.squareup.okhttp3:okhttp:4.6.0")
     implementation("commons-codec:commons-codec:1.14")
 

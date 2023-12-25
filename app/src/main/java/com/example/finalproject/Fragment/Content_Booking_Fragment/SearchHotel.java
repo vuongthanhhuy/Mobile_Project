@@ -1,7 +1,6 @@
 package com.example.finalproject.Fragment.Content_Booking_Fragment;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,14 +14,10 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.Category;
-import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.Hotel;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelModel;
 import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.SearchHotelAdapter;
 import com.example.finalproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,17 +25,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import android.text.Html;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
@@ -119,8 +110,8 @@ public class SearchHotel extends AppCompatActivity {
         });
     }
 
-    private List<Hotel> getListHotel(List<String> listHotelAvailable) {
-        List<Hotel> listHotel= new ArrayList<>();
+    private List<HotelModel> getListHotel(List<String> listHotelAvailable) {
+        List<HotelModel> listHotelModel = new ArrayList<>();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference hotelCollection = db.collection("hotel");
@@ -140,27 +131,27 @@ public class SearchHotel extends AppCompatActivity {
                         int price = (hotelPrice != null) ? hotelPrice.intValue() : 0;
 
                         // Add the hotel to the list
-                        Hotel hotel = new Hotel(hotelID, hotelName, districtAndWard, hotelSymbolicImage, price, 100);
-                        if(!listHotel.contains(hotel)){
-                            listHotel.add(hotel);
+                        HotelModel hotelModel = new HotelModel(hotelID, hotelName, districtAndWard, hotelSymbolicImage, price, 100);
+                        if(!listHotelModel.contains(hotelModel)){
+                            listHotelModel.add(hotelModel);
                         }
                     }
                 }
 
                 // Dùng danh sách hotelList ở đây
-                listSearchHotelAdapter.setData(listHotel);
+                listSearchHotelAdapter.setData(listHotelModel);
                 rcvSearchResult.setAdapter(listSearchHotelAdapter);
             }
         });
 
-        return listHotel;
+        return listHotelModel;
     }
     public interface OnListAvailableCallback {
         void onListAvailable(List<String> listHotelAvailable);
     }
 
     private void getAvaibleHotel(OnListAvailableCallback callback) {
-        List<Hotel> listHotel = new ArrayList<>();
+        List<HotelModel> listHotelModel = new ArrayList<>();
         List<String> listHotelAvailable = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference hotelCollection = db.collection("hotel");

@@ -151,17 +151,19 @@ public class Confirm_Payment extends AppCompatActivity {
                     Intent intent = new Intent(Confirm_Payment.this, MainActivity.class);
                     startActivity(intent);
                 }else if(rdbZaloPay.isChecked()){
-                    requestZalo();
+
+                    String tvtotal = tvTotalPrice.getText().toString().replace("đ", "");
+                    requestZalo(tvtotal);
+
                 }
             }
         });
     }
 
-    private void requestZalo(){
+    private void requestZalo(String totalPriceString){
         CreateOrder orderApi = new CreateOrder();
-
         try {
-            JSONObject data = orderApi.createOrder("10000");
+            JSONObject data = orderApi.createOrder(totalPriceString);
             String code = data.getString("returncode");
             Log.d("code",code);
             if (code.equals("1")) {

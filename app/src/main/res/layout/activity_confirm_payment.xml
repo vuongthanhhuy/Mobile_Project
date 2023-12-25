@@ -78,7 +78,7 @@
                         android:id="@+id/tvHotel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="lá hotel bình tân"
+                        android:text="lá hotelModel bình tân"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
 
@@ -379,7 +379,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:layout_margin="10dp"
-                        android:drawableLeft="@drawable/vnpay"
+                        android:drawableLeft="@drawable/zalopay"
                         android:drawablePadding="10dp"
                         android:layoutDirection="rtl"
                         android:text="@string/zaloPay"

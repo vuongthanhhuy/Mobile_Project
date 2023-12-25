@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,28 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.finalproject.Fragment.Content_Booking_Fragment.HotelDetails;
 import com.example.finalproject.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHolder> {
 
-    private List<Hotel> mHotel;
+    private List<HotelModel> mHotelModel;
     private Context context;
-    public void setData(List<Hotel> list){
-        if (mHotel == null) {
-            mHotel = new ArrayList<>();
+    public void setData(List<HotelModel> list){
+        if (mHotelModel == null) {
+            mHotelModel = new ArrayList<>();
         }
-        mHotel.addAll(list);
+        mHotelModel.addAll(list);
         notifyDataSetChanged();
     }
 
@@ -62,20 +55,20 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
 
     @Override
     public void onBindViewHolder(@NonNull HotelViewHolder holder, final int position) {
-        Hotel hotel = mHotel.get(position);
-        if (hotel == null) {
+        HotelModel hotelModel = mHotelModel.get(position);
+        if (hotelModel == null) {
             return;
         }
 
         // Use data directly from the Hotel object
-        holder.tvName.setText(hotel.getTitle());
-        holder.tvAddressHotel.setText(hotel.getAddressHotel());
-        holder.tvCost.setText(String.valueOf(hotel.getCost()));
-        holder.tvRate.setText(hotel.getRate()+"");
+        holder.tvName.setText(hotelModel.getTitle());
+        holder.tvAddressHotel.setText(hotelModel.getAddressHotel());
+        holder.tvCost.setText(String.valueOf(hotelModel.getCost()));
+        holder.tvRate.setText(hotelModel.getRate()+"");
 
         // Load symbolic image using Glide
         Glide.with(holder.imgHotel.getContext())
-                .load(hotel.getImgHotel())
+                .load(hotelModel.getImgHotel())
                 .into(holder.imgHotel);
 
         // Set click listener for the item
@@ -85,11 +78,11 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
                 int adapterPosition = holder.getAdapterPosition();
                 if (adapterPosition != RecyclerView.NO_POSITION && onHotelItemClickListener != null) {
                     // Pass both position and hotel title when an item is clicked
-                    onHotelItemClickListener.onHotelItemClick(adapterPosition, hotel.getID());
+                    onHotelItemClickListener.onHotelItemClick(adapterPosition, hotelModel.getID());
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     CollectionReference hotelCollection = db.collection("hotel");
 
-                    hotelCollection.whereEqualTo("hotelID", hotel.getID()).get().addOnCompleteListener(task -> {
+                    hotelCollection.whereEqualTo("hotelID", hotelModel.getID()).get().addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot document : task.getResult()) {
                                 String hotelID = document.getString("hotelID");
@@ -151,8 +144,8 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
 
     @Override
     public int getItemCount() {
-        if(mHotel != null){
-            return mHotel.size();
+        if(mHotelModel != null){
+            return mHotelModel.size();
         }
         return 0;
     }

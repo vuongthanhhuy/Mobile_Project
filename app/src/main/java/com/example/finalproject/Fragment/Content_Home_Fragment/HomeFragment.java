@@ -1,47 +1,34 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.finalproject.Fragment.Content_Booking_Fragment.HotelDetails;
-import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.Category;
+import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryModel;
 import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryAdapter;
-import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.Hotel;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelModel;
 import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelAdapter;
-import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment {
     private RecyclerView rcvCategory;
     private CategoryAdapter categoryAdapter;
     private HotelAdapter hotelAdapter;
-    private List<Category> listCategory;
+    private List<CategoryModel> listCategoryModel;
     private Context mContext;
 
 
@@ -60,14 +47,11 @@ public class HomeFragment extends Fragment {
 
         rcvCategory.setAdapter(categoryAdapter);
 
-        // Fetch data from Firestore
         fetchDataFromFirestore();
 
         categoryAdapter.setOnCategoryItemClickListener(new CategoryAdapter.OnCategoryItemClickListener() {
             @Override
             public void onCategoryItemClick(int position) {
-                // Handle category item click
-                // You can add the logic to navigate to a new activity or fragment
                 Toast.makeText(mContext, "asdasd", Toast.LENGTH_SHORT).show();
 
             }
@@ -82,41 +66,30 @@ public class HomeFragment extends Fragment {
 
         hotelCollection.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                List<Category> categoryList = new ArrayList<>();
+                List<CategoryModel> categoryModelList = new ArrayList<>();
 
                 for (DocumentSnapshot document : task.getResult()) {
                     String hotelCategory = document.getString("category");
 
                     if (hotelCategory != null) {
-                        // Lấy tất cả trường từ Firestore
                         String hotelID = document.getId();
                         String hotelName = document.getString("hotelName");
                         String hotelAddress = document.getString("hotelAddress");
                         Long hotelPrice = document.getLong("hotelPrice");
                         String hotelSymbolicImage = document.getString("hotelSymbolicImage");
-                        // Xử lý địa chỉ để lấy quận và phường
                         String districtAndWard = extractDistrictAndWard(hotelAddress);
 
-                        // Chuyển đổi giá từ Long sang int
                         int price = (hotelPrice != null) ? hotelPrice.intValue() : 0;
 
-                        // Tạo đối tượng Hotel
-                        Hotel hotel = new Hotel(hotelID, hotelName, districtAndWard, hotelSymbolicImage, price, 100);
-
-                        // Tạo đối tượng Category nếu chưa tồn tại
-                        Category category = getCategoryByName(categoryList, hotelCategory);
-
-                        // Thêm hotel vào danh sách hotel của category
-                        category.getHotels().add(hotel);
+                        HotelModel hotelModel = new HotelModel(hotelID, hotelName, districtAndWard, hotelSymbolicImage, price, 100);
+                        CategoryModel categoryModel = getCategoryByName(categoryModelList, hotelCategory);
+                        categoryModel.getHotels().add(hotelModel);
                     }
                 }
 
-                // Update adapter with the list of categories
-                categoryAdapter.setData(categoryList);
+                categoryAdapter.setData(categoryModelList);
 
             } else {
-                // Handle errors
-                // Display an error message if needed
             }
         });
     }
@@ -132,17 +105,17 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private Category getCategoryByName(List<Category> categoryList, String categoryName) {
-        for (Category category : categoryList) {
-            if (category.getNameCategory().equals(categoryName)) {
-                return category;
+    private CategoryModel getCategoryByName(List<CategoryModel> categoryModelList, String categoryName) {
+        for (CategoryModel categoryModel : categoryModelList) {
+            if (categoryModel.getNameCategory().equals(categoryName)) {
+                return categoryModel;
             }
         }
 
         // Nếu category chưa tồn tại, tạo mới và thêm vào danh sách
-        Category newCategory = new Category(categoryName, new ArrayList<>());
-        categoryList.add(newCategory);
-        return newCategory;
+        CategoryModel newCategoryModel = new CategoryModel(categoryName, new ArrayList<>());
+        categoryModelList.add(newCategoryModel);
+        return newCategoryModel;
     }
 
 }

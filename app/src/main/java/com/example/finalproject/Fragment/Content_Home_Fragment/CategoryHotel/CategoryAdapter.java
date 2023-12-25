@@ -1,12 +1,10 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,15 +17,15 @@ import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>{
     private Context mContext;
-    private List<Category> mListCategory;
+    private List<CategoryModel> mListCategoryModel;
 
     public CategoryAdapter(Context mContext){
         this.mContext = mContext;
 
     }
 
-    public void setData(List<Category> list){
-        this.mListCategory = list;
+    public void setData(List<CategoryModel> list){
+        this.mListCategoryModel = list;
         notifyDataSetChanged();
     }
 
@@ -51,18 +49,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        Category category = mListCategory.get(position);
-        if (category == null) {
+        CategoryModel categoryModel = mListCategoryModel.get(position);
+        if (categoryModel == null) {
             return;
         }
-        holder.tvNameCategory.setText(category.getNameCategory());
+        holder.tvNameCategory.setText(categoryModel.getNameCategory());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false);
         holder.rcvHotel.setLayoutManager(linearLayoutManager);
 
         // Khởi tạo hotelAdapter
         HotelAdapter hotelAdapter = new HotelAdapter();
-        hotelAdapter.setData(category.getHotels());
+        hotelAdapter.setData(categoryModel.getHotels());
         holder.rcvHotel.setAdapter(hotelAdapter);
 
         // Thiết lập sự kiện click từ HotelAdapter
@@ -79,8 +77,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public int getItemCount() {
-        if(mListCategory != null){
-            return mListCategory.size();
+        if(mListCategoryModel != null){
+            return mListCategoryModel.size();
         }
         return 0;
     }

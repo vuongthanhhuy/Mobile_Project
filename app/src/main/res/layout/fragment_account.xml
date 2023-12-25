@@ -71,13 +71,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/baseline_mode_edit_24" />
 
             </LinearLayout>
 
@@ -208,7 +201,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:drawableLeft="@drawable/outline_language_24"
-                    android:drawableRight="@drawable/united_states_of_america"
+                    android:drawableRight="@drawable/vietnam"
                     android:drawablePadding="13dp"
                     android:fontFamily="sans-serif-light"
                     android:gravity="left"

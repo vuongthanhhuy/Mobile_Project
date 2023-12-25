@@ -1,6 +1,6 @@
 package com.example.finalproject.Fragment.Content_Home_Fragment.Hotel;
 
-public class Hotel {
+public class HotelModel {
     private String id;
     private String title;
     private String addressHotel;
@@ -11,7 +11,7 @@ public class Hotel {
     private int  price;
     private int rate;
 
-    public Hotel(String id, String title, String addressHotel, String imgHotel, int price, int rate) {
+    public HotelModel(String id, String title, String addressHotel, String imgHotel, int price, int rate) {
         this.id = id;
         this.title = title;
         this.addressHotel = addressHotel;

@@ -12,11 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.Hotel;
+import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelModel;
 import com.example.finalproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,14 +24,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRoomViewHolder>{
 
     private List<ListRoomModel> mListRoom;
-    private List<Hotel> mHotel;
+    private List<HotelModel> mHotelModel;
     private String checkIn, checkOut, name, phoneNumber;
     private boolean typeBooking = false;
 
