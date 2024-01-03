@@ -40,14 +40,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userEmail = edtEmail.getText().toString().trim();
-                if(!TextUtils.isEmpty(userEmail)){
+                if (!TextUtils.isEmpty(userEmail)) {
                     resetPassword();
-                }else{
+                } else {
                     edtEmail.setError("Email field can't be empty");
                 }
             }
-
-
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
 
     }

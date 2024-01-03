@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -82,7 +83,9 @@ public class HotelDetails extends AppCompatActivity {
         tvHotelName.setText(hotelName);
         tvHotelAddress.setText(hotelAddress);
         tvHotelIntro.setText(hotelIntro);
-        tvHotelPrice.setText(hotelPriceInt+"000đ");
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        String priceHotel = numberFormat.format(hotelPriceInt)+"đ";
+        tvHotelPrice.setText(priceHotel);
         String checkInNight = "Từ " + checkInTimeNight + " tới 12:00";
         String checkInDay = "Từ " + checkInTimeDay + " tới 12:00";
         tvCheckInNight.setText(checkInNight);

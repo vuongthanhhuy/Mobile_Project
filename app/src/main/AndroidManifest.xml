@@ -32,8 +32,8 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <categoryModel android:name="android.intent.categoryModel.DEFAULT" />
-                <categoryModel android:name="android.intent.categoryModel.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="demozpdk"
                     android:host="app" />
             </intent-filter>
@@ -57,12 +57,12 @@
             android:name=".Login.Login"
             android:exported="true">
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <categoryModel android:name="android.intent.categoryModel.LAUNCHER" />
-             </intent-filter>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
         <activity
             android:name=".Fragment.Content_Account_Fragment.Content_Terms_Privacy.Terms_PrivacyPolicy"
@@ -79,7 +79,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <categoryModel android:name="android.intent.categoryModel.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity

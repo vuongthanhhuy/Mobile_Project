@@ -55,12 +55,10 @@ public class Dialog_Select_Night_Day extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                // Không cần quan tâm khi tab không được chọn.
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                // Không cần quan tâm khi tab được chọn lại.
             }
         });
         btnApply.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +76,7 @@ public class Dialog_Select_Night_Day extends AppCompatActivity {
                 Intent resultIntent = new Intent();
 
                 if(currentTabPosition == 0){
-                    String checkInNight =   tvCheckIn.getText().toString()  + " " + tvTimeCheckIn.getText().toString();
+                    String checkInNight =   tvCheckIn.getText().toString()  + tvTimeCheckIn.getText().toString();
                     String checkOutNight = tvCheckOut.getText().toString();
                     resultIntent.putExtra("checkIn", checkInNight);
                     resultIntent.putExtra("checkOut", checkOutNight);

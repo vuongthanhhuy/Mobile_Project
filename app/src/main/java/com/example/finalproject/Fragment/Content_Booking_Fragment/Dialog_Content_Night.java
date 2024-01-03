@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,13 +50,14 @@ public class Dialog_Content_Night extends Fragment {
         Date currentDate = new Date();
         String currentDateStr = dateFormat.format(currentDate);
 
-        defaultTime = "20:00:00";
+        defaultTime = " 20:00:00";
         tvCheckInNight.setText(currentDateStr);
         tvTimeCheckInNight.setText(defaultTime);
         String nextDay = dateFormat.format(day)+ " 12:00:00";
         tvCheckOutNight.setText(nextDay);
 
         chipGroupDay.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
+
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 StringBuilder stringBuilder = new StringBuilder();
@@ -63,9 +65,8 @@ public class Dialog_Content_Night extends Fragment {
                     Chip chip = view.findViewById(i);
                     stringBuilder.append(" ").append(chip.getText());
                 }
-                String timeFormat = stringBuilder.toString().replaceFirst(" ","")+":00";
-                tvTimeCheckInNight.setText(timeFormat);
-
+                    String timeFormat = stringBuilder.toString().replaceFirst("","")+":00";
+                    tvTimeCheckInNight.setText(timeFormat);
             }
         });
 

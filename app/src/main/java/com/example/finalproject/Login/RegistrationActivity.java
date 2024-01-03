@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproject.R;
@@ -35,7 +36,7 @@ import java.util.Map;
 public class RegistrationActivity extends AppCompatActivity {
     private EditText edtEmail,edtPass,edtName,edtPNumber;
     private Button btnSignUp;
-
+    private TextView tvSignIn;
     private FirebaseAuth mAuth;
 
     private FirebaseFirestore db;
@@ -45,7 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-
+        tvSignIn = findViewById(R.id.tvSignIn);
         edtEmail = findViewById(R.id.edt_email_signUp);
         edtPass = findViewById(R.id.edt_password_signUp);
         edtName = findViewById(R.id.edtName);
@@ -57,6 +58,13 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signUp();
+            }
+        });
+
+        tvSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

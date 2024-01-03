@@ -30,10 +30,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import vn.zalopay.sdk.Environment;
@@ -50,6 +52,7 @@ public class Confirm_Payment extends AppCompatActivity {
     private int priceRoom;
     private String hotelID,roomID,userID, hotelName, hotelAddress, roomName, totalPriceString;
     private boolean typeBooking;
+    private NumberFormat numberFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +90,8 @@ public class Confirm_Payment extends AppCompatActivity {
         tvHotel.setText(hotelName);
         tvAddress.setText(hotelAddress);
         tvRoom.setText(roomName);
-        String priceString = priceRoom+"đ";
+        numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        String priceString = numberFormat.format(priceRoom)+"đ";
         tvPrice.setText(priceString);
         tvTotalPrice.setText(priceString);
         tvCheckInCf.setText(checkIn);
@@ -130,7 +134,7 @@ public class Confirm_Payment extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         int discount = 0;
-        String discountString = "-"+discount+"đ";
+        String discountString = "-"+ discount +"đ";
         tvDiscount.setText(discountString);
 
     }
@@ -235,10 +239,10 @@ public class Confirm_Payment extends AppCompatActivity {
             String promotionID = data.getStringExtra("promotionID");
             int discountPercent = data.getIntExtra("discountPercent", 0);
             int percent = (discountPercent * priceRoom) / 100;
-            String discount = "-"+percent+"đ";
-            tvDiscount.setText(discount);
+            String discountString = "-"+ numberFormat.format(percent) +"đ";
+            tvDiscount.setText(discountString);
             int totalPrice = priceRoom - percent;
-            totalPriceString = totalPrice + "đ";
+            String totalPriceString = numberFormat.format(totalPrice)+ "đ";
             tvTotalPrice.setText(totalPriceString);
         }
     }

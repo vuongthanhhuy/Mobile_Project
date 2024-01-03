@@ -134,6 +134,7 @@ public class Content_Booking_Night extends Fragment {
                 tvCheckOutNight.setText(nextDay);
 
                 chipGroupDay.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
+
                     @Override
                     public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                         StringBuilder stringBuilder = new StringBuilder();
@@ -141,8 +142,9 @@ public class Content_Booking_Night extends Fragment {
                             Chip chip = dialog.findViewById(i);
                             stringBuilder.append("").append(chip.getText());
                         }
-                        String timeFormat = stringBuilder.toString().replaceFirst("","")+":00";
-                        tvTimeCheckInNight.setText(timeFormat);
+
+                            String timeFormat = stringBuilder.toString().replaceFirst(" ", "") + ":00";
+                            tvTimeCheckInNight.setText(timeFormat);
 
                     }
                 });

@@ -25,7 +25,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
-
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRoomViewHolder>{
 
@@ -57,7 +58,8 @@ public class ListRoomAdapter extends RecyclerView.Adapter<ListRoomAdapter.ListRo
             return;
         }
         holder.typeOfRoom.setText(listRoom.getRoomName());
-        String priceRoom = listRoom.getPrice()+"đ";
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        String priceRoom = numberFormat.format(listRoom.getPrice())+"đ";
         holder.price.setText(priceRoom);
         StringBuilder stringBuilder = new StringBuilder();
         if (listRoom.isWifi()) {

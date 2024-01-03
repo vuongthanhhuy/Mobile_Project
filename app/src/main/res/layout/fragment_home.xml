@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Content_Home_Fragment.HomeFragment">
+    tools:context=".Fragment.Content_Home_Fragment.HomeFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,28 +14,45 @@
         android:padding="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TravelNest"
-            android:textColor="#4CAF50"
-            android:textSize="25sp"
-            android:layout_marginBottom="30dp"/>
 
-        <EditText
-            android:id="@+id/edtSearch"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/searchHotel"
-            android:textSize="15dp"
-            android:inputType="text"
-            android:drawableLeft="@drawable/outline_search_24"
-            android:background="@drawable/rounded_edittext"
-            android:labelFor="@+id/editText"
-            android:gravity="center|left"
-            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="TravelNest"
+                android:textColor="#4CAF50"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvCurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:text="asdasdasd"
+                android:textColor="#4CAF50"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_delay="1000"
+            app:iss_text_align="CENTER"
             />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_category"
             android:layout_width="match_parent"

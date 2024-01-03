@@ -58,18 +58,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false);
         holder.rcvHotel.setLayoutManager(linearLayoutManager);
 
-        // Khởi tạo hotelAdapter
         HotelAdapter hotelAdapter = new HotelAdapter();
         hotelAdapter.setData(categoryModel.getHotels());
         holder.rcvHotel.setAdapter(hotelAdapter);
 
-        // Thiết lập sự kiện click từ HotelAdapter
         hotelAdapter.setOnHotelItemClickListener(new HotelAdapter.OnHotelItemClickListener() {
             @Override
             public void onHotelItemClick(int position, String hotelID) {
-                // Handle item click
-                //Log.d("HotelAdapter", "Item clicked at position: " + position + ", Hotel Title: " + hotelTitle);
-                // Now you have the hotel title and can use it as needed
+
             }
         });
 

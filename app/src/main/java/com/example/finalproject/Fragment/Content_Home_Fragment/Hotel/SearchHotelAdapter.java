@@ -19,8 +19,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SearchHotelAdapter extends RecyclerView.Adapter<SearchHotelAdapter.HotelViewHolder> {
 
@@ -68,7 +70,9 @@ public class SearchHotelAdapter extends RecyclerView.Adapter<SearchHotelAdapter.
         // Use data directly from the Hotel object
         holder.tvName.setText(hotelModel.getTitle());
         holder.tvAddressHotel.setText(hotelModel.getAddressHotel());
-        holder.tvCost.setText(String.valueOf(hotelModel.getCost()));
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        String priceString = numberFormat.format(hotelModel.getCost()) +"đ";
+        holder.tvCost.setText(priceString);
         holder.tvRate.setText(hotelModel.getRate()+"");
 
         // Load symbolic image using Glide

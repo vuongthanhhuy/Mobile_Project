@@ -85,8 +85,6 @@ public class ListRoom extends AppCompatActivity {
         hotelID = intent.getStringExtra("hotelID");
         checkInBefore = intent.getStringExtra("checkIn");
         checkOutBefore = intent.getStringExtra("checkOut");
-        Log.d("aaa",checkInBefore);
-        Log.d("bbb",checkOutBefore);
         tvCheckIn.setText(checkInBefore);
         tvCheckOut.setText(checkOutBefore);
 
@@ -155,8 +153,7 @@ public class ListRoom extends AppCompatActivity {
                                                 }
                                             }
                                         }
-                                        Log.d("count",count+"");
-                                        Log.d("count2",count2+"");
+
 
                                         if (count == count2) {
                                             String roomName = roomDocument.getString("roomName");

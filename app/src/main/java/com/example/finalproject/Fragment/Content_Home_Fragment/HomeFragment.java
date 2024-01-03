@@ -7,11 +7,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryModel;
 import com.example.finalproject.Fragment.Content_Home_Fragment.CategoryHotel.CategoryAdapter;
 import com.example.finalproject.Fragment.Content_Home_Fragment.Hotel.HotelModel;
@@ -21,8 +27,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
     private RecyclerView rcvCategory;
@@ -30,7 +39,9 @@ public class HomeFragment extends Fragment {
     private HotelAdapter hotelAdapter;
     private List<CategoryModel> listCategoryModel;
     private Context mContext;
-
+    private ImageSlider imageSlider;
+    private TextView tvCurrentTime;
+    private Handler handler;
 
 
     @Override
@@ -38,6 +49,18 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        tvCurrentTime = view.findViewById(R.id.tvCurrentTime);
+        handler = new Handler(Looper.getMainLooper());
+        updateCurrentTime();
+        imageSlider = view.findViewById(R.id.image_slider);
+        ArrayList<SlideModel> imageList = new ArrayList<>();
+
+        imageList.add(new SlideModel("https://www.cet.edu.vn/wp-content/uploads/2018/09/uu-dai.jpg", "Ưu đãi lên tới 70%", ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel("https://www.bestviewhotel.com.my/app/webroot/upload/images/Voucher%20Promo-02.jpg", "Đặt phòng ngay để giảm giá 45% 1 đêm ", ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel("https://www.amarinsamuiresort.com/images/promotion/banner-promotion-amarin-1.jpg", "Khuyến mãi đặt biệt ", ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel("https://www.oneworldhotel.com.my/wp-content/uploads/sites/237/2022/05/WEBSITE_Stay-Dine-Rebate-RM88-FA_Website_Website-500x250.jpg", "Đặt phòng ngay để nhận ưu đãi", ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(imageList);
         rcvCategory = view.findViewById(R.id.rcv_category);
         categoryAdapter = new CategoryAdapter(getContext());
         hotelAdapter = new HotelAdapter();
@@ -58,6 +81,24 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void updateCurrentTime() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Lấy thời gian hiện tại
+                long currentTimeMillis = System.currentTimeMillis();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+                String currentTimeString = sdf.format(new Date(currentTimeMillis));
+
+                // Cập nhật TextView
+                tvCurrentTime.setText(currentTimeString);
+
+                // Tiếp tục cập nhật sau mỗi giây
+                updateCurrentTime();
+            }
+        }, 1000);
     }
 
     private void fetchDataFromFirestore() {
@@ -117,5 +158,10 @@ public class HomeFragment extends Fragment {
         categoryModelList.add(newCategoryModel);
         return newCategoryModel;
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Loại bỏ các callbacks để tránh rò rỉ bộ nhớ khi Activity bị hủy
+        handler.removeCallbacksAndMessages(null);
+    }
 }
